@@ -1,0 +1,154 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+
+def projectName = 'android-sensors-persistence'
+group = 'com.ubikgs'
+
+def projectVersion = '1.0.0-alpha1'
+version = projectVersion
+
+def repoName = 'AndroidSensors'
+description = 'A collection of abstractions that allows to easily store AndroidSensors records'
+def projectUrl = 'https://github.com/ubikgs/' + repoName + 'Persistence'
+def vcs = projectUrl + '.git'
+
+ext {
+    publishedGroupId = group
+    libraryName = repoName
+    artifact = projectName
+
+    libraryDescription = description
+
+    siteUrl = projectUrl
+    gitUrl = vcs
+
+    developerId = 'ubikgs'
+    developerName = 'Alberto Gonzalez Perez'
+    developerEmail = 'alberto.gonzalez@uji.es'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName version
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+
+    /*
+    * Development
+    * */
+
+    // Vendor JARs in /libs
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android Support Library
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    // Dagger 2 Dependency Injection
+    implementation 'com.google.dagger:dagger:2.11'
+    implementation 'com.google.dagger:dagger-android:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+
+    // RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+
+    // AndroidSensors
+    // implementation 'com.ubikgs:android-sensors:1.0.0-alpha1'
+
+    /*
+    * Testing
+    * */
+
+    // Testing framework
+    testImplementation 'junit:junit:4.12'
+
+    // Mocking framework
+    testImplementation 'org.mockito:mockito-core:2.7.14'
+
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+
+if (project.rootProject.file('local.properties').exists()) {
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER') ? System.getenv('BINTRAY_USER') : properties.getProperty("bintray.user")
+    key = System.getenv('BINTRAY_API_KEY') ? System.getenv('BINTRAY_API_KEY') : properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = repoName
+        name = projectName
+        userOrg = 'ubikgs'
+        desc = description
+        websiteUrl = projectUrl
+        vcsUrl = vcs
+        licenses = ['Apache-2.0']
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = description
+            released = new Date()
+            vcsTag = 'v' + projectVersion
+        }
+    }
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
