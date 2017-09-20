@@ -8,6 +8,9 @@ import com.ubikgs.androidsensors.persistence.entities.SensorRecordEntity;
 import java.util.Collection;
 import java.util.List;
 
+import io.reactivex.Maybe;
+import io.reactivex.Single;
+
 /**
  * Copyright 2017 Alberto González Pérez
  * <p>
@@ -25,9 +28,17 @@ import java.util.List;
  */
 
 public interface SensorRecordDao<T extends SensorRecordEntity>  {
+    Single<List<T>> findAll();
+
+    Maybe<T> findByUid(long uid);
+
+    Single<List<T>> findAllByForeignKey(long foreignKey);
+
     @Insert
     List<Long> createAll(Collection<T> entities);
 
     @Delete
     void removeAll(Collection<T> entities);
+
+    void removeAll();
 }
