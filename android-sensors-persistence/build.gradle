@@ -61,6 +61,19 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation" :
+                                     "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    sourceSets {
+        androidTests.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+
 }
 
 dependencies {
