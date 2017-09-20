@@ -55,6 +55,12 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -83,7 +89,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
 
     // AndroidSensors
-    // implementation 'com.ubikgs:android-sensors:1.0.0-alpha1'
+    implementation 'com.ubikgs:android-sensors:1.0.0-alpha1'
 
     /*
     * Testing
