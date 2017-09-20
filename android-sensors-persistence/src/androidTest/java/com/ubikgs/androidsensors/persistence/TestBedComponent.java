@@ -1,6 +1,7 @@
 package com.ubikgs.androidsensors.persistence;
 
-import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDaoTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.modules.DatabaseModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
@@ -31,5 +32,7 @@ import dagger.Component;
         DatabaseModule.class
 })
 public interface TestBedComponent {
-    void inject(AccelerometerRecordEntityDaoTest test);
+    void inject(AccelerometerRecordEntityDaoIntegrationTest test);
+
+    void inject(GravityRecordEntityDaoIntegrationTest test);
 }

@@ -4,7 +4,9 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -21,7 +23,10 @@ import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEnt
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Database(entities = {AccelerometerRecordEntity.class}, version = 1)
+@Database(entities = {
+        AccelerometerRecordEntity.class,
+        GravityRecordEntity.class
+}, version = 1)
 public abstract class AndroidSensorsDatabase extends RoomDatabase {
     /*
     * WARNING! If you modify this class or a linked entity remember to add and test a proper
@@ -30,5 +35,7 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     * If you don't do so the sensors database will be wiped on every application using this library
     * */
 
-    public abstract AccelerometerRecordEntityDao accelerometerRecordDao();
+    public abstract AccelerometerRecordEntityDao accelerometerRecordEntityDao();
+
+    public abstract GravityRecordEntityDao gravityRecordEntityDao();
 }

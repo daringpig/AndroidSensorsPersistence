@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
 
 import javax.inject.Named;
@@ -39,7 +40,13 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    AccelerometerRecordEntityDao provideAccelerometerRecordDao(AndroidSensorsDatabase database) {
-        return database.accelerometerRecordDao();
+    AccelerometerRecordEntityDao provideAccelerometerRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.accelerometerRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    GravityRecordEntityDao provideGravityRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.gravityRecordEntityDao();
     }
 }
