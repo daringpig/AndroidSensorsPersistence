@@ -27,7 +27,7 @@ import io.reactivex.Single;
  * limitations under the License.
  */
 
-public interface SensorRecordDao<T extends SensorRecordEntity>  {
+public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
     Single<List<T>> findAll();
 
     Maybe<T> findByUid(long uid);

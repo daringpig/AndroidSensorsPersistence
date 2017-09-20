@@ -3,7 +3,7 @@ package com.ubikgs.androidsensors.persistence.daos.imu;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
 
-import com.ubikgs.androidsensors.persistence.daos.SensorRecordDao;
+import com.ubikgs.androidsensors.persistence.daos.SensorRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 
 import java.util.List;
@@ -28,7 +28,7 @@ import io.reactivex.Single;
  */
 
 @Dao
-public interface AccelerometerRecordEntityDao extends SensorRecordDao<AccelerometerRecordEntity> {
+public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<AccelerometerRecordEntity> {
     @Query("SELECT * FROM AccelerometerRecordEntity")
     Single<List<AccelerometerRecordEntity>> findAll();
 
