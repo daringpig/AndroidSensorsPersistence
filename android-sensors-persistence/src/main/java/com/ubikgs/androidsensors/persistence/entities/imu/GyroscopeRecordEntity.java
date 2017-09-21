@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.imu.GyroscopeRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorRecordEntity {
+public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorRecordEntity<GyroscopeRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorReco
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public GyroscopeRecord toSensorRecord() {
+        return new GyroscopeRecord(this);
     }
 
     @Override

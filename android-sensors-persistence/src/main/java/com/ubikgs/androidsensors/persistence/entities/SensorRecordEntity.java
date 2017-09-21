@@ -1,5 +1,7 @@
 package com.ubikgs.androidsensors.persistence.entities;
 
+import com.ubikgs.androidsensors.records.SensorRecord;
+
 /**
  * Copyright 2017 Alberto González Pérez
  * <p>
@@ -16,7 +18,7 @@ package com.ubikgs.androidsensors.persistence.entities;
  * limitations under the License.
  */
 
-public interface SensorRecordEntity {
+public interface SensorRecordEntity<T extends SensorRecord> {
 
     long getUid();
 
@@ -25,4 +27,6 @@ public interface SensorRecordEntity {
     long getForeignKey();
 
     void setForeignKey(long foreignKey);
+
+    T toSensorRecord();
 }

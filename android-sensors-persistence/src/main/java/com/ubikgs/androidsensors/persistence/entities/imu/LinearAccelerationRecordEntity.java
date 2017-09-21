@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.imu.LinearAccelerationRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class LinearAccelerationRecordEntity extends LinearAccelerationRecord implements SensorRecordEntity {
+public class LinearAccelerationRecordEntity extends LinearAccelerationRecord implements SensorRecordEntity<LinearAccelerationRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class LinearAccelerationRecordEntity extends LinearAccelerationRecord imp
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public LinearAccelerationRecord toSensorRecord() {
+        return new LinearAccelerationRecord(this);
     }
 
     @Override

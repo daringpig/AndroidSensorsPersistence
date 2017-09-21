@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.imu.MagneticFieldRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class MagneticFieldRecordEntity extends MagneticFieldRecord implements SensorRecordEntity {
+public class MagneticFieldRecordEntity extends MagneticFieldRecord implements SensorRecordEntity<MagneticFieldRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class MagneticFieldRecordEntity extends MagneticFieldRecord implements Se
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public MagneticFieldRecord toSensorRecord() {
+        return new MagneticFieldRecord(this);
     }
 
     @Override

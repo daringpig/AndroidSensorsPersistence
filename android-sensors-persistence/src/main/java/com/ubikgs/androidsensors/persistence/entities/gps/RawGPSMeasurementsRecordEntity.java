@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.gps.RawGPSMeasurementsRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class RawGPSMeasurementsRecordEntity extends RawGPSMeasurementsRecord implements SensorRecordEntity {
+public class RawGPSMeasurementsRecordEntity extends RawGPSMeasurementsRecord implements SensorRecordEntity<RawGPSMeasurementsRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class RawGPSMeasurementsRecordEntity extends RawGPSMeasurementsRecord imp
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public RawGPSMeasurementsRecord toSensorRecord() {
+        return new RawGPSMeasurementsRecord(this);
     }
 
     @Override

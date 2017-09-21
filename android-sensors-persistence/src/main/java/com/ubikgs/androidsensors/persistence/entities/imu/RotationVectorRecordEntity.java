@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.imu.RotationVectorRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class RotationVectorRecordEntity extends RotationVectorRecord implements SensorRecordEntity {
+public class RotationVectorRecordEntity extends RotationVectorRecord implements SensorRecordEntity<RotationVectorRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class RotationVectorRecordEntity extends RotationVectorRecord implements 
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public RotationVectorRecord toSensorRecord() {
+        return new RotationVectorRecord(this);
     }
 
     @Override

@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.imu.GravityRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class GravityRecordEntity extends GravityRecord implements SensorRecordEntity {
+public class GravityRecordEntity extends GravityRecord implements SensorRecordEntity<GravityRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class GravityRecordEntity extends GravityRecord implements SensorRecordEn
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public GravityRecord toSensorRecord() {
+        return new GravityRecord(this);
     }
 
     @Override

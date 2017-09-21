@@ -23,7 +23,7 @@ import com.ubikgs.androidsensors.records.gps.LocationRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class LocationRecordEntity extends LocationRecord implements SensorRecordEntity {
+public class LocationRecordEntity extends LocationRecord implements SensorRecordEntity<LocationRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -52,6 +52,11 @@ public class LocationRecordEntity extends LocationRecord implements SensorRecord
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public LocationRecord toSensorRecord() {
+        return new LocationRecord(this);
     }
 
     @Override

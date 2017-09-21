@@ -24,7 +24,7 @@ import com.ubikgs.androidsensors.records.imu.AccelerometerRecord;
  */
 
 @Entity(indices = {@Index("foreignKey")})
-public class AccelerometerRecordEntity extends AccelerometerRecord implements SensorRecordEntity {
+public class AccelerometerRecordEntity extends AccelerometerRecord implements SensorRecordEntity<AccelerometerRecord> {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
@@ -53,6 +53,11 @@ public class AccelerometerRecordEntity extends AccelerometerRecord implements Se
     @Override
     public void setForeignKey(long foreignKey) {
         this.foreignKey = foreignKey;
+    }
+
+    @Override
+    public AccelerometerRecord toSensorRecord() {
+        return new AccelerometerRecord(this);
     }
 
     @Override
