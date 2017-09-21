@@ -31,6 +31,7 @@ public class MagneticFieldRecordEntity extends MagneticFieldRecord implements Se
     private long foreignKey;
 
     public MagneticFieldRecordEntity() {
+        super();
     }
 
     @Override

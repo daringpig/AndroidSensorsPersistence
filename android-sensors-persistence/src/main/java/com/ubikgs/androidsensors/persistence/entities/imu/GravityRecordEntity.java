@@ -31,6 +31,7 @@ public class GravityRecordEntity extends GravityRecord implements SensorRecordEn
     private long foreignKey;
 
     public GravityRecordEntity() {
+        super();
     }
 
     @Override

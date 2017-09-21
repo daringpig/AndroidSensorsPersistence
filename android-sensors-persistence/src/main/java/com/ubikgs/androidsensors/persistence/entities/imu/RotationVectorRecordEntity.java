@@ -5,7 +5,7 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.ubikgs.androidsensors.persistence.entities.SensorRecordEntity;
-import com.ubikgs.androidsensors.records.imu.GyroscopeRecord;
+import com.ubikgs.androidsensors.records.imu.RotationVectorRecord;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -23,14 +23,14 @@ import com.ubikgs.androidsensors.records.imu.GyroscopeRecord;
  * limitations under the License.
  */
 @Entity(indices = {@Index("foreignKey")})
-public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorRecordEntity {
+public class RotationVectorRecordEntity extends RotationVectorRecord implements SensorRecordEntity {
 
     @PrimaryKey(autoGenerate = true)
     private long uid;
 
     private long foreignKey;
 
-    public GyroscopeRecordEntity() {
+    public RotationVectorRecordEntity() {
         super();
     }
 
@@ -56,7 +56,7 @@ public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorReco
 
     @Override
     public String toString() {
-        return "GyroscopeRecordEntity{" +
+        return "RotationVectorRecordEntity{" +
                 "uid=" + uid +
                 ", foreignKey=" + foreignKey +
                 "} " + super.toString();
@@ -65,10 +65,10 @@ public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorReco
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof GyroscopeRecordEntity)) return false;
+        if (!(o instanceof RotationVectorRecordEntity)) return false;
         if (!super.equals(o)) return false;
 
-        GyroscopeRecordEntity that = (GyroscopeRecordEntity) o;
+        RotationVectorRecordEntity that = (RotationVectorRecordEntity) o;
 
         if (getUid() != that.getUid()) return false;
         return getForeignKey() == that.getForeignKey();

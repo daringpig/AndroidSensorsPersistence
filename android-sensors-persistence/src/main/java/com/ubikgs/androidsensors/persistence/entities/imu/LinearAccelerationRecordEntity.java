@@ -31,6 +31,7 @@ public class LinearAccelerationRecordEntity extends LinearAccelerationRecord imp
     private long foreignKey;
 
     public LinearAccelerationRecordEntity() {
+        super();
     }
 
     @Override
