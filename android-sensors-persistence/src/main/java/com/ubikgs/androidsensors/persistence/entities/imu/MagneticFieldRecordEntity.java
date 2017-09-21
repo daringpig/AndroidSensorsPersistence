@@ -34,6 +34,10 @@ public class MagneticFieldRecordEntity extends MagneticFieldRecord implements Se
         super();
     }
 
+    public MagneticFieldRecordEntity(MagneticFieldRecord magneticFieldRecord) {
+        super(magneticFieldRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

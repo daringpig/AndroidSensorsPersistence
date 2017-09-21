@@ -34,6 +34,10 @@ public class GravityRecordEntity extends GravityRecord implements SensorRecordEn
         super();
     }
 
+    public GravityRecordEntity(GravityRecord gravityRecord) {
+        super(gravityRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

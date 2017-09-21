@@ -34,6 +34,10 @@ public class GyroscopeRecordEntity extends GyroscopeRecord implements SensorReco
         super();
     }
 
+    public GyroscopeRecordEntity(GyroscopeRecord gyroscopeRecord) {
+        super(gyroscopeRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

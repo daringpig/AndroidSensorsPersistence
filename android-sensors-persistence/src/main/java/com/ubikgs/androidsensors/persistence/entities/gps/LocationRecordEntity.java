@@ -34,6 +34,10 @@ public class LocationRecordEntity extends LocationRecord implements SensorRecord
         super();
     }
 
+    public LocationRecordEntity(LocationRecord locationRecord) {
+        super(locationRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

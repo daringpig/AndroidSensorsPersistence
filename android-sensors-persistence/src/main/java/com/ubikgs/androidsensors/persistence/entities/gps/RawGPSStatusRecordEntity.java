@@ -34,6 +34,10 @@ public class RawGPSStatusRecordEntity extends RawGPSStatusRecord implements Sens
         super();
     }
 
+    public RawGPSStatusRecordEntity(RawGPSStatusRecord rawGPSStatusRecord) {
+        super(rawGPSStatusRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

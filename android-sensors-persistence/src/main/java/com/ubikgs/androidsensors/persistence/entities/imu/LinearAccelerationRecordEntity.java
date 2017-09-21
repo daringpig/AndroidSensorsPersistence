@@ -34,6 +34,10 @@ public class LinearAccelerationRecordEntity extends LinearAccelerationRecord imp
         super();
     }
 
+    public LinearAccelerationRecordEntity(LinearAccelerationRecord linearAccelerationRecord) {
+        super(linearAccelerationRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

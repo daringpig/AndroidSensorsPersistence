@@ -34,6 +34,10 @@ public class RawGPSMeasurementsRecordEntity extends RawGPSMeasurementsRecord imp
         super();
     }
 
+    public RawGPSMeasurementsRecordEntity(RawGPSMeasurementsRecord rawGPSMeasurementsRecord) {
+        super(rawGPSMeasurementsRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

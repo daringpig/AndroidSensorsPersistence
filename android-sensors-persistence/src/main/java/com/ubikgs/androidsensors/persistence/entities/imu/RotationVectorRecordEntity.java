@@ -34,6 +34,10 @@ public class RotationVectorRecordEntity extends RotationVectorRecord implements 
         super();
     }
 
+    public RotationVectorRecordEntity(RotationVectorRecord rotationVectorRecord) {
+        super(rotationVectorRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;

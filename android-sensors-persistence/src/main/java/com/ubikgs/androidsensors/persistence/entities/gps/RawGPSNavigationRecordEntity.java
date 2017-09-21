@@ -34,6 +34,10 @@ public class RawGPSNavigationRecordEntity extends RawGPSNavigationRecord impleme
         super();
     }
 
+    public RawGPSNavigationRecordEntity(RawGPSNavigationRecord rawGPSNavigationRecord) {
+        super(rawGPSNavigationRecord);
+    }
+
     @Override
     public long getUid() {
         return uid;
