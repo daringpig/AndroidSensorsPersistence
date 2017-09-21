@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +37,8 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
 
     protected SensorRecordEntityDao<T> sensorRecordEntityDao;
 
-    protected int entityNumber = 2;
-    protected ForeignKeyStore foreignKeyStore = new ForeignKeyStore();
+    private ForeignKeyStore foreignKeyStore = new ForeignKeyStore();
+    private SensorRecordEntityStore entityStore = new SensorRecordEntityStore();
 
     @Before
     public void setUp() throws Exception {
@@ -50,7 +51,7 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     public void createAll() throws Exception {
         List<Long> uids = createEntities();
 
-        assertThat(uids.size(), equalTo(entityNumber));
+        assertThat(uids.size(), equalTo(entityStore.sensorRecordEntities.size()));
     }
 
     @Test
@@ -59,7 +60,7 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
 
         int size = getStoredRecordAmount();
 
-        assertThat(size, equalTo(entityNumber));
+        assertThat(size, equalTo(entityStore.sensorRecordEntities.size()));
     }
 
     @Test
@@ -109,7 +110,9 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
         assertThat(size, equalTo(0));
     }
 
-    protected abstract List<Long> createEntities();
+    protected List<Long> createEntities() {
+        return sensorRecordEntityDao.createAll(entityStore.sensorRecordEntities);
+    }
 
     private int getStoredRecordAmount() {
         return sensorRecordEntityDao.findAll()
@@ -128,7 +131,7 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
         sensorRecordEntityDao.removeAll();
     }
 
-    protected class ForeignKeyStore {
+    private class ForeignKeyStore {
         Map<Long, Integer> foreignKeys = new HashMap<>();
 
         public long registerUsage(long foreignKey) {
@@ -138,5 +141,21 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
             }
             return foreignKey;
         }
+    }
+
+    protected long registerForeignKeyUsage(long foreignKey) {
+        return foreignKeyStore.registerUsage(foreignKey);
+    }
+
+    private class SensorRecordEntityStore {
+        List<T> sensorRecordEntities = new ArrayList<>();
+
+        public void registerEntity(T entity) {
+            sensorRecordEntities.add(entity);
+        }
+    }
+
+    protected void registerTestEntity(T entity) {
+        entityStore.registerEntity(entity);
     }
 }

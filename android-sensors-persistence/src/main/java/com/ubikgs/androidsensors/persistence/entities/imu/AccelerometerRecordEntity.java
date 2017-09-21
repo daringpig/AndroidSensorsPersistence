@@ -35,10 +35,12 @@ public class AccelerometerRecordEntity extends AccelerometerRecord implements Se
         super();
     }
 
+    @Override
     public long getUid() {
         return uid;
     }
 
+    @Override
     public void setUid(long uid) {
         this.uid = uid;
     }

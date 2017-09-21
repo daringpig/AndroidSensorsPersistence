@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
 
 import javax.inject.Named;
@@ -48,5 +49,11 @@ public class DatabaseModule {
     @Singleton
     GravityRecordEntityDao provideGravityRecordEntityDao(AndroidSensorsDatabase database) {
         return database.gravityRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    GyroscopeRecordEntityDao provideGyroscopeRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.gyroscopeRecordEntityDao();
     }
 }

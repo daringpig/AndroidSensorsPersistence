@@ -5,8 +5,10 @@ import android.arch.persistence.room.RoomDatabase;
 
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -25,7 +27,8 @@ import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
  */
 @Database(entities = {
         AccelerometerRecordEntity.class,
-        GravityRecordEntity.class
+        GravityRecordEntity.class,
+        GyroscopeRecordEntity.class
 }, version = 1)
 public abstract class AndroidSensorsDatabase extends RoomDatabase {
     /*
@@ -38,4 +41,6 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     public abstract AccelerometerRecordEntityDao accelerometerRecordEntityDao();
 
     public abstract GravityRecordEntityDao gravityRecordEntityDao();
+
+    public abstract GyroscopeRecordEntityDao gyroscopeRecordEntityDao();
 }

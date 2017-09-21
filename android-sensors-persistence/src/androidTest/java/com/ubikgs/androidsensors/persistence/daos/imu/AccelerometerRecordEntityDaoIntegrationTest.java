@@ -6,9 +6,7 @@ import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEnt
 
 import org.junit.Before;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,35 +30,31 @@ public class AccelerometerRecordEntityDaoIntegrationTest
 
     @Inject AccelerometerRecordEntityDao accelerometerRecordEntityDao;
 
-    private AccelerometerRecordEntity entity1;
-    private AccelerometerRecordEntity entity2;
-
     @Before
     public void setUp() throws Exception {
         DaggerTestBedComponent.create().inject(this);
 
         sensorRecordEntityDao = accelerometerRecordEntityDao;
 
-        entity1 = new AccelerometerRecordEntity();
+        AccelerometerRecordEntity entity1 = new AccelerometerRecordEntity();
         entity1.setAccuracy(1.0f);
         entity1.setSensorTimestamp(new Date().getTime());
         entity1.setSystemTimestamp(new Date().getTime());
         entity1.setX(1.0f);
         entity1.setY(1.0f);
         entity1.setZ(1.0f);
-        entity1.setForeignKey(foreignKeyStore.registerUsage(0));
+        entity1.setForeignKey(registerForeignKeyUsage(0));
 
-        entity2 = new AccelerometerRecordEntity();
+        AccelerometerRecordEntity entity2 = new AccelerometerRecordEntity();
         entity2.setAccuracy(1.0f);
         entity2.setSensorTimestamp(new Date().getTime());
         entity2.setSystemTimestamp(new Date().getTime());
         entity2.setX(1.0f);
         entity2.setY(1.0f);
         entity2.setZ(1.0f);
-        entity2.setForeignKey(foreignKeyStore.registerUsage(1));
-    }
+        entity2.setForeignKey(registerForeignKeyUsage(1));
 
-    protected List<Long> createEntities() {
-        return accelerometerRecordEntityDao.createAll(Arrays.asList(entity1, entity2));
+        registerTestEntity(entity1);
+        registerTestEntity(entity2);
     }
 }

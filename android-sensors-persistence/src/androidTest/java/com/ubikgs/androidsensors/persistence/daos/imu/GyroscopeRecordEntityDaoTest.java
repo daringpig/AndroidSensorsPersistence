@@ -2,7 +2,7 @@ package com.ubikgs.androidsensors.persistence.daos.imu;
 
 import com.ubikgs.androidsensors.persistence.DaggerTestBedComponent;
 import com.ubikgs.androidsensors.persistence.daos.SensorRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 
 import org.junit.Before;
 
@@ -25,18 +25,16 @@ import javax.inject.Inject;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class GravityRecordEntityDaoIntegrationTest
-        extends SensorRecordEntityDaoIntegrationTest<GravityRecordEntity> {
+public class GyroscopeRecordEntityDaoTest extends SensorRecordEntityDaoIntegrationTest<GyroscopeRecordEntity> {
 
-    @Inject GravityRecordEntityDao gravityRecordEntityDao;
+    @Inject GyroscopeRecordEntityDao gyroscopeRecordEntityDao;
 
     @Before
     public void setUp() throws Exception {
         DaggerTestBedComponent.create().inject(this);
+        sensorRecordEntityDao = gyroscopeRecordEntityDao;
 
-        sensorRecordEntityDao = gravityRecordEntityDao;
-
-        GravityRecordEntity entity1 = new GravityRecordEntity();
+        GyroscopeRecordEntity entity1 = new GyroscopeRecordEntity();
         entity1.setAccuracy(1.0f);
         entity1.setSensorTimestamp(new Date().getTime());
         entity1.setSystemTimestamp(new Date().getTime());
@@ -45,7 +43,7 @@ public class GravityRecordEntityDaoIntegrationTest
         entity1.setZ(1.0f);
         entity1.setForeignKey(registerForeignKeyUsage(0));
 
-        GravityRecordEntity entity2 = new GravityRecordEntity();
+        GyroscopeRecordEntity entity2 = new GyroscopeRecordEntity();
         entity2.setAccuracy(1.0f);
         entity2.setSensorTimestamp(new Date().getTime());
         entity2.setSystemTimestamp(new Date().getTime());
@@ -57,4 +55,5 @@ public class GravityRecordEntityDaoIntegrationTest
         registerTestEntity(entity1);
         registerTestEntity(entity2);
     }
+
 }
