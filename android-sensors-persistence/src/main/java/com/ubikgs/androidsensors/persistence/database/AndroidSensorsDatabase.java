@@ -6,6 +6,7 @@ import android.arch.persistence.room.TypeConverters;
 
 import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
@@ -14,6 +15,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityD
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
@@ -47,7 +49,8 @@ import com.ubikgs.androidsensors.persistence.typeconverters.LongArrayConverter;
         MagneticFieldRecordEntity.class,
         RotationVectorRecordEntity.class,
         LocationRecordEntity.class,
-        RawGPSMeasurementsRecordEntity.class
+        RawGPSMeasurementsRecordEntity.class,
+        RawGPSNavigationRecordEntity.class
 }, version = 1)
 @TypeConverters({
         DoubleArrayConverter.class,
@@ -77,4 +80,6 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     public abstract LocationRecordEntityDao locationRecordEntityDao();
 
     public abstract RawGPSMeasurementsRecordEntityDao rawGPSMeasurementsRecordEntityDao();
+
+    public abstract RawGPSNavigationRecordEntityDao rawGPSNavigationRecordEntityDao();
 }
