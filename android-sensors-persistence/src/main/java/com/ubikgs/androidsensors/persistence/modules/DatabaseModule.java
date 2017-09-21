@@ -8,6 +8,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
 
 import javax.inject.Named;
@@ -69,5 +70,11 @@ public class DatabaseModule {
     @Singleton
     MagneticFieldRecordEntityDao provideMagneticFieldRecordEntityDao(AndroidSensorsDatabase database) {
         return database.magneticFieldRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    RotationVectorRecordEntityDao provideRotationVectorRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rotationVectorRecordEntityDao();
     }
 }

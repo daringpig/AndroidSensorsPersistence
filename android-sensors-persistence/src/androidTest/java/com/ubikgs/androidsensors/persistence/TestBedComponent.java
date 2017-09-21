@@ -5,6 +5,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDaoInte
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDaoTest;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.modules.DatabaseModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
@@ -44,4 +45,6 @@ public interface TestBedComponent {
     void inject(LinearAccelerationRecordEntityDaoTest test);
 
     void inject(MagneticFieldRecordEntityDaoIntegrationTest test);
+
+    void inject(RotationVectorRecordEntityDaoIntegrationTest test);
 }

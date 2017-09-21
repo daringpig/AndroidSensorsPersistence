@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "38eed0813c0bd2e5fd0a9de78c628f09",
+    "identityHash": "bf08b8a0bb9861920ab954c764597904",
     "entities": [
       {
         "tableName": "AccelerometerRecordEntity",
@@ -358,11 +358,94 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "RotationVectorRecordEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `xSin` REAL NOT NULL, `ySin` REAL NOT NULL, `zSin` REAL NOT NULL, `cos` REAL NOT NULL, `headingAccuracy` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xSin",
+            "columnName": "xSin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ySin",
+            "columnName": "ySin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "zSin",
+            "columnName": "zSin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cos",
+            "columnName": "cos",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "headingAccuracy",
+            "columnName": "headingAccuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RotationVectorRecordEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RotationVectorRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"38eed0813c0bd2e5fd0a9de78c628f09\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"bf08b8a0bb9861920ab954c764597904\")"
     ]
   }
 }
