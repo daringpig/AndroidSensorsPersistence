@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
@@ -83,5 +84,11 @@ public class DatabaseModule {
     @Singleton
     LocationRecordEntityDao provideLocationRecordEntityDao(AndroidSensorsDatabase database) {
         return database.locationRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    RawGPSMeasurementsRecordEntityDao provideRawGPSMeasurementsRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rawGPSMeasurementsRecordEntityDao();
     }
 }

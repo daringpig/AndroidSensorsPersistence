@@ -2,8 +2,10 @@ package com.ubikgs.androidsensors.persistence.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 
 import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
@@ -11,12 +13,16 @@ import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEn
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEntity;
+import com.ubikgs.androidsensors.persistence.typeconverters.DoubleArrayConverter;
+import com.ubikgs.androidsensors.persistence.typeconverters.IntArrayConverter;
+import com.ubikgs.androidsensors.persistence.typeconverters.LongArrayConverter;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -40,8 +46,14 @@ import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEn
         LinearAccelerationRecordEntity.class,
         MagneticFieldRecordEntity.class,
         RotationVectorRecordEntity.class,
-        LocationRecordEntity.class
+        LocationRecordEntity.class,
+        RawGPSMeasurementsRecordEntity.class
 }, version = 1)
+@TypeConverters({
+        DoubleArrayConverter.class,
+        IntArrayConverter.class,
+        LongArrayConverter.class
+})
 public abstract class AndroidSensorsDatabase extends RoomDatabase {
     /*
     * WARNING! If you modify this class or a linked entity remember to add and test a proper
@@ -63,4 +75,6 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     public abstract RotationVectorRecordEntityDao rotationVectorRecordEntityDao();
 
     public abstract LocationRecordEntityDao locationRecordEntityDao();
+
+    public abstract RawGPSMeasurementsRecordEntityDao rawGPSMeasurementsRecordEntityDao();
 }

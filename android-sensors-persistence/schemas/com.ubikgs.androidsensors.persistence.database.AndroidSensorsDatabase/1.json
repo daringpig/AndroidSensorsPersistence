@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d2da4b35bbffde3458ce150411cdccf2",
+    "identityHash": "4191733b4389ff4d8a979f1983f3ee58",
     "entities": [
       {
         "tableName": "AccelerometerRecordEntity",
@@ -524,11 +524,148 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "RawGPSMeasurementsRecordEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `svids` TEXT, `constellations` TEXT, `timeOffsets` TEXT, `stateCodes` TEXT, `svTimes` TEXT, `svTimeUncerts` TEXT, `cn0DbHzs` TEXT, `pseudoranges` TEXT, `pseudorangeUncerts` TEXT, `deltaStates` TEXT, `deltas` TEXT, `deltaUncerts` TEXT, `multipaths` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "satelliteCount",
+            "columnName": "satelliteCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "svids",
+            "columnName": "svids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "constellations",
+            "columnName": "constellations",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timeOffsets",
+            "columnName": "timeOffsets",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateCodes",
+            "columnName": "stateCodes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svTimes",
+            "columnName": "svTimes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svTimeUncerts",
+            "columnName": "svTimeUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cn0DbHzs",
+            "columnName": "cn0DbHzs",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudoranges",
+            "columnName": "pseudoranges",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudorangeUncerts",
+            "columnName": "pseudorangeUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltaStates",
+            "columnName": "deltaStates",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltas",
+            "columnName": "deltas",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltaUncerts",
+            "columnName": "deltaUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multipaths",
+            "columnName": "multipaths",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RawGPSMeasurementsRecordEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RawGPSMeasurementsRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d2da4b35bbffde3458ce150411cdccf2\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"4191733b4389ff4d8a979f1983f3ee58\")"
     ]
   }
 }
