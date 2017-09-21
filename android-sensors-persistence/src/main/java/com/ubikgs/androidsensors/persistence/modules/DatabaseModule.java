@@ -3,6 +3,7 @@ package com.ubikgs.androidsensors.persistence.modules;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
+import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
@@ -76,5 +77,11 @@ public class DatabaseModule {
     @Singleton
     RotationVectorRecordEntityDao provideRotationVectorRecordEntityDao(AndroidSensorsDatabase database) {
         return database.rotationVectorRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    LocationRecordEntityDao provideLocationRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.locationRecordEntityDao();
     }
 }

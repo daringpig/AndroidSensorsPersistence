@@ -3,12 +3,14 @@ package com.ubikgs.androidsensors.persistence.database;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
+import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
@@ -37,7 +39,8 @@ import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEn
         GyroscopeRecordEntity.class,
         LinearAccelerationRecordEntity.class,
         MagneticFieldRecordEntity.class,
-        RotationVectorRecordEntity.class
+        RotationVectorRecordEntity.class,
+        LocationRecordEntity.class
 }, version = 1)
 public abstract class AndroidSensorsDatabase extends RoomDatabase {
     /*
@@ -58,4 +61,6 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     public abstract MagneticFieldRecordEntityDao magneticFieldRecordEntityDao();
 
     public abstract RotationVectorRecordEntityDao rotationVectorRecordEntityDao();
+
+    public abstract LocationRecordEntityDao locationRecordEntityDao();
 }
