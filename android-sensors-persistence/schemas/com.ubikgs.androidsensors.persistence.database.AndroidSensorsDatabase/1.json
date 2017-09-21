@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dffc25bf52613e5ee76606e099dc0f0d",
+    "identityHash": "ae7f3b141479d1e658b370e96a46cdea",
     "entities": [
       {
         "tableName": "AccelerometerRecordEntity",
@@ -720,11 +720,100 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "RawGPSStatusRecordEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `azimuths` TEXT, `cn0DHzs` TEXT, `constellationTypes` TEXT, `elevations` TEXT, `svids` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "satelliteCount",
+            "columnName": "satelliteCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "azimuths",
+            "columnName": "azimuths",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cn0DHzs",
+            "columnName": "cn0DHzs",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "constellationTypes",
+            "columnName": "constellationTypes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "elevations",
+            "columnName": "elevations",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svids",
+            "columnName": "svids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RawGPSStatusRecordEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RawGPSStatusRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"dffc25bf52613e5ee76606e099dc0f0d\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ae7f3b141479d1e658b370e96a46cdea\")"
     ]
   }
 }

@@ -2,7 +2,7 @@ package com.ubikgs.androidsensors.persistence.daos.gps;
 
 import com.ubikgs.androidsensors.persistence.DaggerTestBedComponent;
 import com.ubikgs.androidsensors.persistence.daos.SensorRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusRecordEntity;
 
 import org.junit.Before;
 
@@ -25,31 +25,37 @@ import javax.inject.Inject;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class RawGPSNavigationRecordEntityDaoIntegrationTest extends SensorRecordEntityDaoIntegrationTest<RawGPSNavigationRecordEntity> {
+public class RawGPSStatusRecordEntityDaoIntegrationTest extends SensorRecordEntityDaoIntegrationTest<RawGPSStatusRecordEntity> {
 
-    @Inject RawGPSNavigationRecordEntityDao rawGPSNavigationRecordEntityDao;
+    @Inject RawGPSStatusRecordEntityDao rawGPSStatusRecordEntityDao;
 
     @Before
     public void setUp() throws Exception {
         DaggerTestBedComponent.create().inject(this);
-        sensorRecordEntityDao = rawGPSNavigationRecordEntityDao;
+        sensorRecordEntityDao = rawGPSStatusRecordEntityDao;
 
-        RawGPSNavigationRecordEntity entity1 = new RawGPSNavigationRecordEntity();
+        RawGPSStatusRecordEntity entity1 = new RawGPSStatusRecordEntity();
         entity1.setAccuracy(1.0f);
         entity1.setSensorTimestamp(new Date().getTime());
         entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setMessage("Type = Glonass L1 C/A, Svid = 106, Status = ParityPassed, " +
-                "MessageId = -1, SubmessageId = 10, " +
-                "Data = {85, 108, 0, -33, 75, -112, -63, -8, 25, 25, 56}");
+        entity1.setSatelliteCount(1);
+        entity1.setAzimuths(new float[]{});
+        entity1.setCn0DHzs(new float[]{1.0f});
+        entity1.setConstellationTypes(new int[]{1});
+        entity1.setElevations(new float[]{1.0f, 2.0f});
+        entity1.setSvids(new int[]{1});
         entity1.setForeignKey(registerForeignKeyUsage(0));
 
-        RawGPSNavigationRecordEntity entity2 = new RawGPSNavigationRecordEntity();
+        RawGPSStatusRecordEntity entity2 = new RawGPSStatusRecordEntity();
         entity2.setAccuracy(1.0f);
         entity2.setSensorTimestamp(new Date().getTime());
         entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setMessage("Type = Glonass L1 C/A, Svid = 96, Status = ParityPassed, " +
-                "MessageId = -1, SubmessageId = 12, " +
-                "Data = {101, 116, -16, -64, -124, 32, -27, 20, 53, 88, -8}");
+        entity2.setSatelliteCount(1);
+        entity2.setAzimuths(new float[]{});
+        entity2.setCn0DHzs(new float[]{1.0f});
+        entity2.setConstellationTypes(new int[]{1});
+        entity2.setElevations(new float[]{1.0f, 2.0f});
+        entity2.setSvids(new int[]{1});
         entity2.setForeignKey(registerForeignKeyUsage(1));
 
         registerTestEntity(entity1);

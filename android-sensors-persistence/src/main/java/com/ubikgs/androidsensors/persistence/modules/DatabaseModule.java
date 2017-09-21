@@ -6,6 +6,7 @@ import android.content.Context;
 import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
@@ -97,5 +98,11 @@ public class DatabaseModule {
     @Singleton
     RawGPSNavigationRecordEntityDao provideRawGPSNavigationRecordEntityDao(AndroidSensorsDatabase database) {
         return database.rawGPSNavigationRecordEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    RawGPSStatusRecordEntityDao provideRawGPSStatusRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rawGPSStatusRecordEntityDao();
     }
 }
