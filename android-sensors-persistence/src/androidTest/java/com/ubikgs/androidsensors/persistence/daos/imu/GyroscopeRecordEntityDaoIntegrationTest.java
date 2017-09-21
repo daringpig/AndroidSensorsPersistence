@@ -25,7 +25,7 @@ import javax.inject.Inject;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class GyroscopeRecordEntityDaoTest extends SensorRecordEntityDaoIntegrationTest<GyroscopeRecordEntity> {
+public class GyroscopeRecordEntityDaoIntegrationTest extends SensorRecordEntityDaoIntegrationTest<GyroscopeRecordEntity> {
 
     @Inject GyroscopeRecordEntityDao gyroscopeRecordEntityDao;
 
