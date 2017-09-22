@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEnt
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<AccelerometerRecordEntity> {
-    @Query("SELECT * FROM AccelerometerRecordEntity WHERE uid = :uid")
-    Maybe<AccelerometerRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity")
     Single<Long> count();
 

@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface GyroscopeRecordEntityDao extends SensorRecordEntityDao<GyroscopeRecordEntity> {
-    @Query("SELECT * FROM GyroscopeRecordEntity WHERE uid = :uid")
-    Maybe<GyroscopeRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity")
     Single<Long> count();
 

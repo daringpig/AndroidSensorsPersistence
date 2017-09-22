@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecord
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface RawGPSNavigationRecordEntityDao extends SensorRecordEntityDao<RawGPSNavigationRecordEntity> {
-    @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE uid = :uid")
-    Maybe<RawGPSNavigationRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity")
     Single<Long> count();
 

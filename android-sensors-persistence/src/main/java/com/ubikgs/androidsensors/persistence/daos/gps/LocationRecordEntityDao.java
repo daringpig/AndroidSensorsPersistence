@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LocationRecordEntityDao extends SensorRecordEntityDao<LocationRecordEntity> {
-    @Query("SELECT * FROM LocationRecordEntity WHERE uid = :uid")
-    Maybe<LocationRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM LocationRecordEntity")
     Single<Long> count();
 

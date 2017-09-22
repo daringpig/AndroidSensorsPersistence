@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEn
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface RotationVectorRecordEntityDao extends SensorRecordEntityDao<RotationVectorRecordEntity> {
-    @Query("SELECT * FROM RotationVectorRecordEntity WHERE uid = :uid")
-    Maybe<RotationVectorRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity")
     Single<Long> count();
 

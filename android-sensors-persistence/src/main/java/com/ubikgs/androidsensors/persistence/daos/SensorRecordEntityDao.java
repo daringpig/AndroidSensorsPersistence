@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.SensorRecordEntity;
 import java.util.Collection;
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,8 +27,6 @@ import io.reactivex.Single;
  */
 
 public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
-    Maybe<T> findByUid(long uid);
-
     Single<Long> count();
 
     Single<List<T>> findAll();

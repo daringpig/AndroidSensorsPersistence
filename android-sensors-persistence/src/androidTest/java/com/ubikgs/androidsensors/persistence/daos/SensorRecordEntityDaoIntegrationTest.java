@@ -3,7 +3,6 @@ package com.ubikgs.androidsensors.persistence.daos;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.ubikgs.androidsensors.persistence.entities.SensorRecordEntity;
-import com.ubikgs.androidsensors.records.SensorRecord;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,18 +52,6 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
         List<Long> uids = createEntities();
 
         assertThat(uids.size(), equalTo(entityStore.entities.size()));
-    }
-
-    @Test
-    public void findByUid() throws Exception {
-        List<Long> uids = createEntities();
-
-        for (int i = 0; i < uids.size(); i++) {
-            SensorRecord sensorRecord = sensorRecordEntityDao.findByUid(uids.get(i))
-                    .blockingGet().toSensorRecord();
-
-            assertThat(sensorRecord, equalTo(entityStore.entities.get(i).toSensorRecord()));
-        }
     }
 
     @Test

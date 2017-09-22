@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface GravityRecordEntityDao extends SensorRecordEntityDao<GravityRecordEntity> {
-    @Query("SELECT * FROM GravityRecordEntity WHERE uid = :uid")
-    Maybe<GravityRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM GravityRecordEntity")
     Single<Long> count();
 

@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationReco
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao<LinearAccelerationRecordEntity> {
-    @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE uid = :uid")
-    Maybe<LinearAccelerationRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity")
     Single<Long> count();
 

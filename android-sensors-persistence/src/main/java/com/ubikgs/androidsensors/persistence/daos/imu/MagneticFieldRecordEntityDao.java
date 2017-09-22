@@ -8,7 +8,6 @@ import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEnt
 
 import java.util.List;
 
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 /**
@@ -28,9 +27,6 @@ import io.reactivex.Single;
  */
 @Dao
 public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<MagneticFieldRecordEntity> {
-    @Query("SELECT * FROM MagneticFieldRecordEntity WHERE uid = :uid")
-    Maybe<MagneticFieldRecordEntity> findByUid(long uid);
-
     @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity")
     Single<Long> count();
 
