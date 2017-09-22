@@ -28,11 +28,14 @@ import io.reactivex.Single;
  */
 @Dao
 public interface GravityRecordEntityDao extends SensorRecordEntityDao<GravityRecordEntity> {
+    @Query("SELECT * FROM GravityRecordEntity WHERE uid = :uid")
+    Maybe<GravityRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM GravityRecordEntity")
     Single<List<GravityRecordEntity>> findAll();
 
-    @Query("SELECT * FROM GravityRecordEntity WHERE uid = :uid")
-    Maybe<GravityRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM GravityRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<GravityRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM GravityRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<GravityRecordEntity>> findAllByForeignKey(long foreignKey);

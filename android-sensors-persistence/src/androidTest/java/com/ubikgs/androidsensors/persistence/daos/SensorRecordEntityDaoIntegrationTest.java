@@ -52,16 +52,7 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     public void createAll() throws Exception {
         List<Long> uids = createEntities();
 
-        assertThat(uids.size(), equalTo(entityStore.sensorRecordEntities.size()));
-    }
-
-    @Test
-    public void findAll() throws Exception {
-        createEntities();
-
-        int size = getStoredRecordAmount();
-
-        assertThat(size, equalTo(entityStore.sensorRecordEntities.size()));
+        assertThat(uids.size(), equalTo(entityStore.entities.size()));
     }
 
     @Test
@@ -72,8 +63,28 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
             SensorRecord sensorRecord = sensorRecordEntityDao.findByUid(uids.get(i))
                     .blockingGet().toSensorRecord();
 
-            assertThat(sensorRecord, equalTo(entityStore.sensorRecordEntities.get(i).toSensorRecord()));
+            assertThat(sensorRecord, equalTo(entityStore.entities.get(i).toSensorRecord()));
         }
+    }
+
+    @Test
+    public void findAll() throws Exception {
+        createEntities();
+
+        int size = getStoredRecordAmount();
+
+        assertThat(size, equalTo(entityStore.entities.size()));
+    }
+
+    @Test
+    public void findAll_withOffsetAndLimit() throws Exception {
+        int expectedSize = entityStore.entities.size() -1 < 0 ? 0 : 1;
+
+        createEntities();
+
+        int size = getStoredRecordAmountWith(1, 1);
+
+        assertThat(size, equalTo(expectedSize));
     }
 
     @Test
@@ -114,11 +125,16 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     protected List<Long> createEntities() {
-        return sensorRecordEntityDao.createAll(entityStore.sensorRecordEntities);
+        return sensorRecordEntityDao.createAll(entityStore.entities);
     }
 
     private int getStoredRecordAmount() {
         return sensorRecordEntityDao.findAll()
+                .blockingGet().size();
+    }
+
+    private int getStoredRecordAmountWith(long offset, long limit) {
+        return sensorRecordEntityDao.findAll(offset, limit)
                 .blockingGet().size();
     }
 
@@ -151,10 +167,10 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     private class SensorRecordEntityStore {
-        List<T> sensorRecordEntities = new ArrayList<>();
+        List<T> entities = new ArrayList<>();
 
         public void registerEntity(T entity) {
-            sensorRecordEntities.add(entity);
+            entities.add(entity);
         }
     }
 

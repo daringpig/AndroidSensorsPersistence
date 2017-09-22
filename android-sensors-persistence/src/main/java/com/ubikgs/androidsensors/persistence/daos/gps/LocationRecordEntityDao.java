@@ -28,11 +28,14 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LocationRecordEntityDao extends SensorRecordEntityDao<LocationRecordEntity> {
+    @Query("SELECT * FROM LocationRecordEntity WHERE uid = :uid")
+    Maybe<LocationRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM LocationRecordEntity")
     Single<List<LocationRecordEntity>> findAll();
 
-    @Query("SELECT * FROM LocationRecordEntity WHERE uid = :uid")
-    Maybe<LocationRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM LocationRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<LocationRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM LocationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<LocationRecordEntity>> findAllByForeignKey(long foreignKey);

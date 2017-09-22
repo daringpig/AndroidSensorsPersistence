@@ -28,9 +28,11 @@ import io.reactivex.Single;
  */
 
 public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
+    Maybe<T> findByUid(long uid);
+
     Single<List<T>> findAll();
 
-    Maybe<T> findByUid(long uid);
+    Single<List<T>> findAll(long offset, long limit);
 
     Single<List<T>> findAllByForeignKey(long foreignKey);
 

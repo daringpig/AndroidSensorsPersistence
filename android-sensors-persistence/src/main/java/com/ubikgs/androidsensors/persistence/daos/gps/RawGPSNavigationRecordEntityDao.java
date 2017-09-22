@@ -28,11 +28,14 @@ import io.reactivex.Single;
  */
 @Dao
 public interface RawGPSNavigationRecordEntityDao extends SensorRecordEntityDao<RawGPSNavigationRecordEntity> {
+    @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE uid = :uid")
+    Maybe<RawGPSNavigationRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM RawGPSNavigationRecordEntity")
     Single<List<RawGPSNavigationRecordEntity>> findAll();
 
-    @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE uid = :uid")
-    Maybe<RawGPSNavigationRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM RawGPSNavigationRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<RawGPSNavigationRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<RawGPSNavigationRecordEntity>> findAllByForeignKey(long foreignKey);

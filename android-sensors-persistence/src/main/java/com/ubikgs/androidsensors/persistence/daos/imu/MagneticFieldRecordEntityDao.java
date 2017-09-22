@@ -28,11 +28,14 @@ import io.reactivex.Single;
  */
 @Dao
 public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<MagneticFieldRecordEntity> {
+    @Query("SELECT * FROM MagneticFieldRecordEntity WHERE uid = :uid")
+    Maybe<MagneticFieldRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM MagneticFieldRecordEntity")
     Single<List<MagneticFieldRecordEntity>> findAll();
 
-    @Query("SELECT * FROM MagneticFieldRecordEntity WHERE uid = :uid")
-    Maybe<MagneticFieldRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM MagneticFieldRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<MagneticFieldRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<MagneticFieldRecordEntity>> findAllByForeignKey(long foreignKey);

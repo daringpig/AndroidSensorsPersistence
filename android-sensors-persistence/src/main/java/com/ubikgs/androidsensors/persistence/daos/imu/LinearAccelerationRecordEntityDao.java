@@ -28,11 +28,14 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao<LinearAccelerationRecordEntity> {
+    @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE uid = :uid")
+    Maybe<LinearAccelerationRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM LinearAccelerationRecordEntity")
     Single<List<LinearAccelerationRecordEntity>> findAll();
 
-    @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE uid = :uid")
-    Maybe<LinearAccelerationRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM LinearAccelerationRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<LinearAccelerationRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<LinearAccelerationRecordEntity>> findAllByForeignKey(long foreignKey);

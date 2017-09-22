@@ -26,14 +26,16 @@ import io.reactivex.Single;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Dao
 public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<AccelerometerRecordEntity> {
+    @Query("SELECT * FROM AccelerometerRecordEntity WHERE uid = :uid")
+    Maybe<AccelerometerRecordEntity> findByUid(long uid);
+
     @Query("SELECT * FROM AccelerometerRecordEntity")
     Single<List<AccelerometerRecordEntity>> findAll();
 
-    @Query("SELECT * FROM AccelerometerRecordEntity WHERE uid = :uid")
-    Maybe<AccelerometerRecordEntity> findByUid(long uid);
+    @Query("SELECT * FROM AccelerometerRecordEntity LIMIT :limit OFFSET :offset")
+    Single<List<AccelerometerRecordEntity>> findAll(long offset, long limit);
 
     @Query("SELECT * FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<AccelerometerRecordEntity>> findAllByForeignKey(long foreignKey);
