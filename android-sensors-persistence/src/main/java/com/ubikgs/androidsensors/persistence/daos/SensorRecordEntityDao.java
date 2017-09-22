@@ -1,6 +1,5 @@
 package com.ubikgs.androidsensors.persistence.daos;
 
-import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 
 import com.ubikgs.androidsensors.persistence.entities.SensorRecordEntity;
@@ -41,9 +40,6 @@ public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
 
     @Insert
     List<Long> createAll(Collection<T> entities);
-
-    @Delete
-    void removeAll(Collection<T> entities);
 
     void removeAll();
 }

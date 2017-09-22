@@ -123,20 +123,6 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
-    public void removeAllPassedBy() throws Exception {
-        createEntities();
-
-        List<T> entities = sensorRecordEntityDao.findAll()
-                .blockingGet();
-
-        sensorRecordEntityDao.removeAll(entities);
-
-        int size = getStoredRecordAmount();
-
-        assertThat(size, equalTo(0));
-    }
-
-    @Test
     public void removeAll() throws Exception {
         createEntities();
 
