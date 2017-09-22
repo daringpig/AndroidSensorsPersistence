@@ -43,6 +43,9 @@ public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<Magn
     @Query("SELECT * FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<MagneticFieldRecordEntity>> findAllByForeignKey(long foreignKey);
 
+    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("DELETE FROM MagneticFieldRecordEntity")
     void removeAll();
 }

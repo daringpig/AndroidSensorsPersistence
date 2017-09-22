@@ -43,6 +43,9 @@ public interface LocationRecordEntityDao extends SensorRecordEntityDao<LocationR
     @Query("SELECT * FROM LocationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<LocationRecordEntity>> findAllByForeignKey(long foreignKey);
 
+    @Query("SELECT COUNT(*) FROM LocationRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("DELETE FROM LocationRecordEntity")
     void removeAll();
 }

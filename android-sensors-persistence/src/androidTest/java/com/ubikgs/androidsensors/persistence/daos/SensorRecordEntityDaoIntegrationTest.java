@@ -109,6 +109,19 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
+    public void countByForeignKey() throws Exception {
+        createEntities();
+
+        for (Long foreignKey : foreignKeyStore.foreignKeys.keySet()) {
+            int count = foreignKeyStore.foreignKeys.get(foreignKey);
+
+            Long size = sensorRecordEntityDao.countByForeignKey(foreignKey).blockingGet();
+
+            assertThat(size.intValue(), equalTo(count));
+        }
+    }
+
+    @Test
     public void removeAllPassedBy() throws Exception {
         createEntities();
 
