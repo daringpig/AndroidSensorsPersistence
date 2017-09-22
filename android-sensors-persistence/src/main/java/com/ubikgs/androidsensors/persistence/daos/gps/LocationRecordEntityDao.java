@@ -34,10 +34,10 @@ public interface LocationRecordEntityDao extends SensorRecordEntityDao<LocationR
     Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM LocationRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    Single<Long> countBy(long foreignKey);
 
     @Query("SELECT * FROM LocationRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
-    Single<List<LocationRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
+    Single<List<LocationRecordEntity>> findAllBy(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM LocationRecordEntity")
     void removeAll();

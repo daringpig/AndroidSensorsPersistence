@@ -34,10 +34,10 @@ public interface GyroscopeRecordEntityDao extends SensorRecordEntityDao<Gyroscop
     Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    Single<Long> countBy(long foreignKey);
 
     @Query("SELECT * FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
-    Single<List<GyroscopeRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
+    Single<List<GyroscopeRecordEntity>> findAllBy(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM GyroscopeRecordEntity")
     void removeAll();

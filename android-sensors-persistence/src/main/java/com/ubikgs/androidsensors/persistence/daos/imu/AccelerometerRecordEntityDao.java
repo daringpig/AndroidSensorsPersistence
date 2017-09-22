@@ -34,10 +34,10 @@ public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<Acce
     Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    Single<Long> countBy(long foreignKey);
 
     @Query("SELECT * FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
-    Single<List<AccelerometerRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
+    Single<List<AccelerometerRecordEntity>> findAllBy(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM AccelerometerRecordEntity")
     void removeAll();
