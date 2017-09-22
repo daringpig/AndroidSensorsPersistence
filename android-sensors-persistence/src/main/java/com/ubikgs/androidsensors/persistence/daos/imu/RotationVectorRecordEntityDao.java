@@ -31,20 +31,23 @@ public interface RotationVectorRecordEntityDao extends SensorRecordEntityDao<Rot
     @Query("SELECT * FROM RotationVectorRecordEntity WHERE uid = :uid")
     Maybe<RotationVectorRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM RotationVectorRecordEntity")
-    Single<List<RotationVectorRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM RotationVectorRecordEntity")
+    Single<List<RotationVectorRecordEntity>> findAll();
 
     @Query("SELECT * FROM RotationVectorRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RotationVectorRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM RotationVectorRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<RotationVectorRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM RotationVectorRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<RotationVectorRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM RotationVectorRecordEntity")
     void removeAll();

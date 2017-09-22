@@ -31,20 +31,23 @@ public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<Magn
     @Query("SELECT * FROM MagneticFieldRecordEntity WHERE uid = :uid")
     Maybe<MagneticFieldRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM MagneticFieldRecordEntity")
-    Single<List<MagneticFieldRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM MagneticFieldRecordEntity")
+    Single<List<MagneticFieldRecordEntity>> findAll();
 
     @Query("SELECT * FROM MagneticFieldRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<MagneticFieldRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<MagneticFieldRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<MagneticFieldRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM MagneticFieldRecordEntity")
     void removeAll();

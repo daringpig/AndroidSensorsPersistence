@@ -31,20 +31,23 @@ public interface RawGPSMeasurementsRecordEntityDao extends SensorRecordEntityDao
     @Query("SELECT * FROM RawGPSMeasurementsRecordEntity WHERE uid = :uid")
     Maybe<RawGPSMeasurementsRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM RawGPSMeasurementsRecordEntity")
-    Single<List<RawGPSMeasurementsRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM RawGPSMeasurementsRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM RawGPSMeasurementsRecordEntity")
+    Single<List<RawGPSMeasurementsRecordEntity>> findAll();
 
     @Query("SELECT * FROM RawGPSMeasurementsRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RawGPSMeasurementsRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM RawGPSMeasurementsRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM RawGPSMeasurementsRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<RawGPSMeasurementsRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM RawGPSMeasurementsRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM RawGPSMeasurementsRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<RawGPSMeasurementsRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM RawGPSMeasurementsRecordEntity")
     void removeAll();

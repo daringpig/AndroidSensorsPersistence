@@ -30,15 +30,17 @@ import io.reactivex.Single;
 public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
     Maybe<T> findByUid(long uid);
 
-    Single<List<T>> findAll();
-
     Single<Long> count();
+
+    Single<List<T>> findAll();
 
     Single<List<T>> findAll(long offset, long limit);
 
+    Single<Long> countByForeignKey(long foreignKey);
+
     Single<List<T>> findAllByForeignKey(long foreignKey);
 
-    Single<Long> countByForeignKey(long foreignKey);
+    Single<List<T>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Insert
     List<Long> createAll(Collection<T> entities);

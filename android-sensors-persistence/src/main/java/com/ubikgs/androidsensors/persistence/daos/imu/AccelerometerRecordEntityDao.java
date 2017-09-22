@@ -31,20 +31,23 @@ public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<Acce
     @Query("SELECT * FROM AccelerometerRecordEntity WHERE uid = :uid")
     Maybe<AccelerometerRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM AccelerometerRecordEntity")
-    Single<List<AccelerometerRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM AccelerometerRecordEntity")
+    Single<List<AccelerometerRecordEntity>> findAll();
 
     @Query("SELECT * FROM AccelerometerRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<AccelerometerRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<AccelerometerRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM AccelerometerRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<AccelerometerRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM AccelerometerRecordEntity")
     void removeAll();

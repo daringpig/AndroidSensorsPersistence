@@ -31,20 +31,23 @@ public interface RawGPSNavigationRecordEntityDao extends SensorRecordEntityDao<R
     @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE uid = :uid")
     Maybe<RawGPSNavigationRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM RawGPSNavigationRecordEntity")
-    Single<List<RawGPSNavigationRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM RawGPSNavigationRecordEntity")
+    Single<List<RawGPSNavigationRecordEntity>> findAll();
 
     @Query("SELECT * FROM RawGPSNavigationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RawGPSNavigationRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<RawGPSNavigationRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<RawGPSNavigationRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM RawGPSNavigationRecordEntity")
     void removeAll();

@@ -31,20 +31,23 @@ public interface GyroscopeRecordEntityDao extends SensorRecordEntityDao<Gyroscop
     @Query("SELECT * FROM GyroscopeRecordEntity WHERE uid = :uid")
     Maybe<GyroscopeRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM GyroscopeRecordEntity")
-    Single<List<GyroscopeRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM GyroscopeRecordEntity")
+    Single<List<GyroscopeRecordEntity>> findAll();
 
     @Query("SELECT * FROM GyroscopeRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<GyroscopeRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<GyroscopeRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<GyroscopeRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM GyroscopeRecordEntity")
     void removeAll();

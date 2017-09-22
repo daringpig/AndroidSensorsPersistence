@@ -31,20 +31,23 @@ public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao
     @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE uid = :uid")
     Maybe<LinearAccelerationRecordEntity> findByUid(long uid);
 
-    @Query("SELECT * FROM LinearAccelerationRecordEntity")
-    Single<List<LinearAccelerationRecordEntity>> findAll();
-
     @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity")
     Single<Long> count();
+
+    @Query("SELECT * FROM LinearAccelerationRecordEntity")
+    Single<List<LinearAccelerationRecordEntity>> findAll();
 
     @Query("SELECT * FROM LinearAccelerationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<LinearAccelerationRecordEntity>> findAll(long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countByForeignKey(long foreignKey);
+
     @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
     Single<List<LinearAccelerationRecordEntity>> findAllByForeignKey(long foreignKey);
 
-    @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countByForeignKey(long foreignKey);
+    @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
+    Single<List<LinearAccelerationRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
     @Query("DELETE FROM LinearAccelerationRecordEntity")
     void removeAll();
