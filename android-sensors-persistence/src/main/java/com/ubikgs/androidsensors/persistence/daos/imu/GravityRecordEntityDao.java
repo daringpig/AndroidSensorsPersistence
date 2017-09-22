@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface GravityRecordEntityDao extends SensorRecordEntityDao<GravityRecordEntity> {
-    @Query("SELECT COUNT(*) FROM GravityRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM GravityRecordEntity")
-    Single<List<GravityRecordEntity>> findAll();
-
     @Query("SELECT * FROM GravityRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<GravityRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM GravityRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM GravityRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

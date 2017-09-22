@@ -138,8 +138,8 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     private int getStoredRecordAmount() {
-        return sensorRecordEntityDao.findAll()
-                .blockingGet().size();
+        return sensorRecordEntityDao.count()
+                .blockingGet().intValue();
     }
 
     private int getStoredRecordAmountWith(long offset, long limit) {

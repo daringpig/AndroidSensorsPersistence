@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao<LinearAccelerationRecordEntity> {
-    @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM LinearAccelerationRecordEntity")
-    Single<List<LinearAccelerationRecordEntity>> findAll();
-
     @Query("SELECT * FROM LinearAccelerationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<LinearAccelerationRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

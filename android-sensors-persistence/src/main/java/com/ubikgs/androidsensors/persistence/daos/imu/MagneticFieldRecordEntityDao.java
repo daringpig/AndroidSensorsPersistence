@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<MagneticFieldRecordEntity> {
-    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM MagneticFieldRecordEntity")
-    Single<List<MagneticFieldRecordEntity>> findAll();
-
     @Query("SELECT * FROM MagneticFieldRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<MagneticFieldRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

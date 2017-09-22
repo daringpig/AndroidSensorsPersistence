@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface GyroscopeRecordEntityDao extends SensorRecordEntityDao<GyroscopeRecordEntity> {
-    @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM GyroscopeRecordEntity")
-    Single<List<GyroscopeRecordEntity>> findAll();
-
     @Query("SELECT * FROM GyroscopeRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<GyroscopeRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

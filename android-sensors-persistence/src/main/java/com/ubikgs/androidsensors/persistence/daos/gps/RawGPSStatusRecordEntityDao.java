@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface RawGPSStatusRecordEntityDao extends SensorRecordEntityDao<RawGPSStatusRecordEntity> {
-    @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM RawGPSStatusRecordEntity")
-    Single<List<RawGPSStatusRecordEntity>> findAll();
-
     @Query("SELECT * FROM RawGPSStatusRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RawGPSStatusRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

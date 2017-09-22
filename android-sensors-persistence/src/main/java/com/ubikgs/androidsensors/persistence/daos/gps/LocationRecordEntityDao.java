@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface LocationRecordEntityDao extends SensorRecordEntityDao<LocationRecordEntity> {
-    @Query("SELECT COUNT(*) FROM LocationRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM LocationRecordEntity")
-    Single<List<LocationRecordEntity>> findAll();
-
     @Query("SELECT * FROM LocationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<LocationRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM LocationRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM LocationRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);

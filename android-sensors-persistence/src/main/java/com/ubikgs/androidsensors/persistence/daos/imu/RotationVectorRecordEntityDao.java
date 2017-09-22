@@ -27,14 +27,11 @@ import io.reactivex.Single;
  */
 @Dao
 public interface RotationVectorRecordEntityDao extends SensorRecordEntityDao<RotationVectorRecordEntity> {
-    @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity")
-    Single<Long> count();
-
-    @Query("SELECT * FROM RotationVectorRecordEntity")
-    Single<List<RotationVectorRecordEntity>> findAll();
-
     @Query("SELECT * FROM RotationVectorRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RotationVectorRecordEntity>> findAll(long offset, long limit);
+
+    @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity")
+    Single<Long> count();
 
     @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);
