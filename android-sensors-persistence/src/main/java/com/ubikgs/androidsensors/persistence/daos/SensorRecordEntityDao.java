@@ -39,5 +39,5 @@ public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
 
     void removeAll();
 
-    void removeBy(long foreignKey);
+    void removeAllBy(long foreignKey);
 }
