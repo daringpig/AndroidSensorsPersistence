@@ -78,7 +78,9 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
 
         createEntities();
 
-        int size = getStoredRecordAmountWith(1, 1);
+        int size = sensorRecordEntityDao.findAll(1, 1)
+                .blockingGet()
+                .size();
 
         assertThat(size, equalTo(expectedSize));
     }
@@ -117,7 +119,10 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
             int count = storeCount - 1 < 0 ? 0 : storeCount - 1;
             if (count > 1) count = 1;
 
-            int size = getRecordAmountByForeignKeyWith(foreignKey, 1, 1);
+            int size = sensorRecordEntityDao.findAllByForeignKey(foreignKey, 1, 1)
+                    .blockingGet()
+                    .size();
+
             assertThat(size, equalTo(count));
         }
     }
@@ -139,24 +144,14 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
 
     private int getStoredRecordAmount() {
         return sensorRecordEntityDao.count()
-                .blockingGet().intValue();
-    }
-
-    private int getStoredRecordAmountWith(long offset, long limit) {
-        return sensorRecordEntityDao.findAll(offset, limit)
-                .blockingGet().size();
+                .blockingGet()
+                .intValue();
     }
 
     private int getRecordAmountByForeignKey(long foreignKey) {
-        return sensorRecordEntityDao.findAllByForeignKey(foreignKey)
+        return sensorRecordEntityDao.countByForeignKey(foreignKey)
                 .blockingGet()
-                .size();
-    }
-
-    private int getRecordAmountByForeignKeyWith(long foreignKey, long offset, long limit) {
-        return sensorRecordEntityDao.findAllByForeignKey(foreignKey, offset, limit)
-                .blockingGet()
-                .size();
+                .intValue();
     }
 
     @After

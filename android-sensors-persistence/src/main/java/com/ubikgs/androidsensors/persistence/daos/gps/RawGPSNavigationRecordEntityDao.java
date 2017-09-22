@@ -36,9 +36,6 @@ public interface RawGPSNavigationRecordEntityDao extends SensorRecordEntityDao<R
     @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);
 
-    @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey")
-    Single<List<RawGPSNavigationRecordEntity>> findAllByForeignKey(long foreignKey);
-
     @Query("SELECT * FROM RawGPSNavigationRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
     Single<List<RawGPSNavigationRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 

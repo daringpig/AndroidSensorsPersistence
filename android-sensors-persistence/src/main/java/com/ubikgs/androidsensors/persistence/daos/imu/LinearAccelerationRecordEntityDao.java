@@ -36,9 +36,6 @@ public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao
     @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);
 
-    @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey")
-    Single<List<LinearAccelerationRecordEntity>> findAllByForeignKey(long foreignKey);
-
     @Query("SELECT * FROM LinearAccelerationRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
     Single<List<LinearAccelerationRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 

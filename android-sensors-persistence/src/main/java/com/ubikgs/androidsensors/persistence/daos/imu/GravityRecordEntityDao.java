@@ -36,9 +36,6 @@ public interface GravityRecordEntityDao extends SensorRecordEntityDao<GravityRec
     @Query("SELECT COUNT(*) FROM GravityRecordEntity WHERE foreignKey = :foreignKey")
     Single<Long> countByForeignKey(long foreignKey);
 
-    @Query("SELECT * FROM GravityRecordEntity WHERE foreignKey = :foreignKey")
-    Single<List<GravityRecordEntity>> findAllByForeignKey(long foreignKey);
-
     @Query("SELECT * FROM GravityRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
     Single<List<GravityRecordEntity>> findAllByForeignKey(long foreignKey, long offset, long limit);
 
