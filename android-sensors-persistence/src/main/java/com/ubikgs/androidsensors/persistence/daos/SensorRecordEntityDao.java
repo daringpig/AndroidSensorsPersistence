@@ -26,16 +26,18 @@ import io.reactivex.Single;
  */
 
 public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
+    @Insert
+    List<Long> createAll(Collection<T> entities);
+
     Single<List<T>> findAll(long offset, long limit);
 
     Single<Long> count();
 
-    Single<Long> countBy(long foreignKey);
-
     Single<List<T>> findAllBy(long foreignKey, long offset, long limit);
 
-    @Insert
-    List<Long> createAll(Collection<T> entities);
+    Single<Long> countBy(long foreignKey);
 
     void removeAll();
+
+    void removeBy(long foreignKey);
 }

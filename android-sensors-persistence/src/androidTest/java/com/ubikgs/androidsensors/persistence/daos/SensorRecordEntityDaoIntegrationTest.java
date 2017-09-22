@@ -55,24 +55,6 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
-    public void count() throws Exception {
-        createEntities();
-
-        Long count = sensorRecordEntityDao.count().blockingGet();
-
-        assertThat(count.intValue(), equalTo(entityStore.entities.size()));
-    }
-
-    @Test
-    public void findAll() throws Exception {
-        createEntities();
-
-        int size = getStoredRecordAmount();
-
-        assertThat(size, equalTo(entityStore.entities.size()));
-    }
-
-    @Test
     public void findAll_withOffsetAndLimit() throws Exception {
         int expectedSize = entityStore.entities.size() -1 < 0 ? 0 : 1;
 
@@ -86,28 +68,12 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
-    public void countByForeignKey() throws Exception {
+    public void count() throws Exception {
         createEntities();
 
-        for (Long foreignKey : foreignKeyStore.foreignKeys.keySet()) {
-            int count = foreignKeyStore.foreignKeys.get(foreignKey);
+        Long count = sensorRecordEntityDao.count().blockingGet();
 
-            Long size = sensorRecordEntityDao.countBy(foreignKey).blockingGet();
-
-            assertThat(size.intValue(), equalTo(count));
-        }
-    }
-
-    @Test
-    public void findAllByForeignKey() throws Exception {
-        createEntities();
-
-        for (Long foreignKey : foreignKeyStore.foreignKeys.keySet()) {
-            int count = foreignKeyStore.foreignKeys.get(foreignKey);
-
-            int size = getRecordAmountByForeignKey(foreignKey);
-            assertThat(size, equalTo(count));
-        }
+        assertThat(count.intValue(), equalTo(entityStore.entities.size()));
     }
 
     @Test
@@ -128,6 +94,19 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
+    public void countByForeignKey() throws Exception {
+        createEntities();
+
+        for (Long foreignKey : foreignKeyStore.foreignKeys.keySet()) {
+            int count = foreignKeyStore.foreignKeys.get(foreignKey);
+
+            Long size = sensorRecordEntityDao.countBy(foreignKey).blockingGet();
+
+            assertThat(size.intValue(), equalTo(count));
+        }
+    }
+
+    @Test
     public void removeAll() throws Exception {
         createEntities();
 
@@ -138,18 +117,25 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
         assertThat(size, equalTo(0));
     }
 
-    protected List<Long> createEntities() {
+    @Test
+    public void removeByForeignKey() throws Exception {
+        createEntities();
+
+        for (Long foreignKey : foreignKeyStore.foreignKeys.keySet()) {
+            sensorRecordEntityDao.removeAllBy(foreignKey);
+
+            Long size = sensorRecordEntityDao.countBy(foreignKey).blockingGet();
+
+            assertThat(size, equalTo(0L));
+        }
+    }
+
+    private List<Long> createEntities() {
         return sensorRecordEntityDao.createAll(entityStore.entities);
     }
 
     private int getStoredRecordAmount() {
         return sensorRecordEntityDao.count()
-                .blockingGet()
-                .intValue();
-    }
-
-    private int getRecordAmountByForeignKey(long foreignKey) {
-        return sensorRecordEntityDao.countBy(foreignKey)
                 .blockingGet()
                 .intValue();
     }

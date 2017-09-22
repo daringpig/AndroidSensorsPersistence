@@ -33,12 +33,15 @@ public interface RawGPSStatusRecordEntityDao extends SensorRecordEntityDao<RawGP
     @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity")
     Single<Long> count();
 
-    @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity WHERE foreignKey = :foreignKey")
-    Single<Long> countBy(long foreignKey);
-
     @Query("SELECT * FROM RawGPSStatusRecordEntity WHERE foreignKey = :foreignKey LIMIT :limit OFFSET :offset")
     Single<List<RawGPSStatusRecordEntity>> findAllBy(long foreignKey, long offset, long limit);
 
+    @Query("SELECT COUNT(*) FROM RawGPSStatusRecordEntity WHERE foreignKey = :foreignKey")
+    Single<Long> countBy(long foreignKey);
+
     @Query("DELETE FROM RawGPSStatusRecordEntity")
     void removeAll();
+
+    @Query("DELETE FROM RawGPSStatusRecordEntity WHERE foreignKey = :foreignKey")
+    void removeAllBy(long foreignKey);
 }
