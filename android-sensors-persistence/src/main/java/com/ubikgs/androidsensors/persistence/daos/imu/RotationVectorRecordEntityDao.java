@@ -34,6 +34,9 @@ public interface RotationVectorRecordEntityDao extends SensorRecordEntityDao<Rot
     @Query("SELECT * FROM RotationVectorRecordEntity")
     Single<List<RotationVectorRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM RotationVectorRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM RotationVectorRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RotationVectorRecordEntity>> findAll(long offset, long limit);
 

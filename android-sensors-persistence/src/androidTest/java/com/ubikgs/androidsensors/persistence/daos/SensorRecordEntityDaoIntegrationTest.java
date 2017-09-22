@@ -77,6 +77,15 @@ public abstract class SensorRecordEntityDaoIntegrationTest<T extends SensorRecor
     }
 
     @Test
+    public void count() throws Exception {
+        createEntities();
+
+        Long count = sensorRecordEntityDao.count().blockingGet();
+
+        assertThat(count.intValue(), equalTo(entityStore.entities.size()));
+    }
+
+    @Test
     public void findAll_withOffsetAndLimit() throws Exception {
         int expectedSize = entityStore.entities.size() -1 < 0 ? 0 : 1;
 

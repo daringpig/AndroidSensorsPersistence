@@ -34,6 +34,9 @@ public interface RawGPSNavigationRecordEntityDao extends SensorRecordEntityDao<R
     @Query("SELECT * FROM RawGPSNavigationRecordEntity")
     Single<List<RawGPSNavigationRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM RawGPSNavigationRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM RawGPSNavigationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RawGPSNavigationRecordEntity>> findAll(long offset, long limit);
 

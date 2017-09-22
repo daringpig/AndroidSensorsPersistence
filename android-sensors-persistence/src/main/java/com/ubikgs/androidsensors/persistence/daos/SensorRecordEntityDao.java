@@ -32,6 +32,8 @@ public interface SensorRecordEntityDao<T extends SensorRecordEntity>  {
 
     Single<List<T>> findAll();
 
+    Single<Long> count();
+
     Single<List<T>> findAll(long offset, long limit);
 
     Single<List<T>> findAllByForeignKey(long foreignKey);

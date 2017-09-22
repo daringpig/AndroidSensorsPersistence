@@ -34,6 +34,9 @@ public interface MagneticFieldRecordEntityDao extends SensorRecordEntityDao<Magn
     @Query("SELECT * FROM MagneticFieldRecordEntity")
     Single<List<MagneticFieldRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM MagneticFieldRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM MagneticFieldRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<MagneticFieldRecordEntity>> findAll(long offset, long limit);
 

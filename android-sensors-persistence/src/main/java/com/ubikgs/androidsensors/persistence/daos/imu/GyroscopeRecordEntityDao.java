@@ -34,6 +34,9 @@ public interface GyroscopeRecordEntityDao extends SensorRecordEntityDao<Gyroscop
     @Query("SELECT * FROM GyroscopeRecordEntity")
     Single<List<GyroscopeRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM GyroscopeRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM GyroscopeRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<GyroscopeRecordEntity>> findAll(long offset, long limit);
 

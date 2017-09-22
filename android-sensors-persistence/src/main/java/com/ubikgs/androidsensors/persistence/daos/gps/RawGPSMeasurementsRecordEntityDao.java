@@ -34,6 +34,9 @@ public interface RawGPSMeasurementsRecordEntityDao extends SensorRecordEntityDao
     @Query("SELECT * FROM RawGPSMeasurementsRecordEntity")
     Single<List<RawGPSMeasurementsRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM RawGPSMeasurementsRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM RawGPSMeasurementsRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<RawGPSMeasurementsRecordEntity>> findAll(long offset, long limit);
 

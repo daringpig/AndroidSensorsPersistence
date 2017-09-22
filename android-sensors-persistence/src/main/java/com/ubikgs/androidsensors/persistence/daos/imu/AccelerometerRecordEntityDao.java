@@ -34,6 +34,9 @@ public interface AccelerometerRecordEntityDao extends SensorRecordEntityDao<Acce
     @Query("SELECT * FROM AccelerometerRecordEntity")
     Single<List<AccelerometerRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM AccelerometerRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM AccelerometerRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<AccelerometerRecordEntity>> findAll(long offset, long limit);
 

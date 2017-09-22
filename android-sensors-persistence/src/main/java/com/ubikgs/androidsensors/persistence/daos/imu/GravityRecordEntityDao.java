@@ -34,6 +34,9 @@ public interface GravityRecordEntityDao extends SensorRecordEntityDao<GravityRec
     @Query("SELECT * FROM GravityRecordEntity")
     Single<List<GravityRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM GravityRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM GravityRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<GravityRecordEntity>> findAll(long offset, long limit);
 

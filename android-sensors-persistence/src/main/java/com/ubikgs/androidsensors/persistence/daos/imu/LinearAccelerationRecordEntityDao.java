@@ -34,6 +34,9 @@ public interface LinearAccelerationRecordEntityDao extends SensorRecordEntityDao
     @Query("SELECT * FROM LinearAccelerationRecordEntity")
     Single<List<LinearAccelerationRecordEntity>> findAll();
 
+    @Query("SELECT COUNT(*) FROM LinearAccelerationRecordEntity")
+    Single<Long> count();
+
     @Query("SELECT * FROM LinearAccelerationRecordEntity LIMIT :limit OFFSET :offset")
     Single<List<LinearAccelerationRecordEntity>> findAll(long offset, long limit);
 
