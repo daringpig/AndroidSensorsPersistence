@@ -48,6 +48,18 @@ public abstract class AbstractSensorRecordRepository<T extends SensorRecord, E e
                 .map(sensorRecordEntityDao::createAll);
     }
 
+    @Override
+    public Single<List<Long>> createAll(Collection<T> sensorRecords, Long foreignKey) {
+        return Observable.fromIterable(sensorRecords)
+                .map(this::createFrom)
+                .map(e -> {
+                    e.setForeignKey(foreignKey);
+                    return e;
+                })
+                .toList()
+                .map(sensorRecordEntityDao::createAll);
+    }
+
     protected abstract E createFrom(T sensorRecord);
 
     public Flowable<T> findAll() {

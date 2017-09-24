@@ -27,6 +27,8 @@ import io.reactivex.Single;
 public interface SensorRecordRepository<T extends SensorRecord> {
     Single<List<Long>> createAll(Collection<T> sensorRecords);
 
+    Single<List<Long>> createAll(Collection<T> sensorRecords, Long foreignKey);
+
     Flowable<T> findAll();
 
     Single<Long> count();

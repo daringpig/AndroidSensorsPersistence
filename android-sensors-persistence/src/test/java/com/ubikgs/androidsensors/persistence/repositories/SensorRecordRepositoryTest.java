@@ -73,6 +73,22 @@ public abstract class SensorRecordRepositoryTest<T extends SensorRecord, E exten
     }
 
     @Test
+    public void createAll_withForeignKey() throws Exception {
+        Map<Long, T> recordsToCreate = provideSensorRecordsToCreate();
+
+        List<Long> pKeys = new ArrayList<>(recordsToCreate.keySet());
+        when(sensorRecordEntityDao.createAll(anyCollection()))
+                .thenReturn(pKeys);
+
+        List<Long> keys = sensorRecordRepository.createAll(
+                provideSensorRecordsToCreate().values(), 0L).blockingGet();
+
+        verify(sensorRecordEntityDao, times(1)).createAll(anyCollection());
+
+        assertThat(keys, equalTo(pKeys));
+    }
+
+    @Test
     public void findAll() throws Exception {
         int count = 1001;
 
