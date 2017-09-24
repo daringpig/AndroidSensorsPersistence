@@ -1,11 +1,9 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
-import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
-import com.ubikgs.androidsensors.records.imu.AccelerometerRecord;
-
-import javax.inject.Inject;
+import com.ubikgs.androidsensors.records.imu.GravityRecord;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -23,20 +21,20 @@ import javax.inject.Inject;
  * limitations under the License.
  */
 
-public class AccelerometerRecordRepository extends AbstractSensorRecordRepository<AccelerometerRecord, AccelerometerRecordEntity> {
+public class GravityRecordRepository extends AbstractSensorRecordRepository<GravityRecord, GravityRecordEntity> {
 
-    @Inject
-    public AccelerometerRecordRepository(AccelerometerRecordEntityDao sensorRecordEntityDao) {
+
+    public GravityRecordRepository(GravityRecordEntityDao sensorRecordEntityDao) {
         super(sensorRecordEntityDao);
     }
 
     @Override
-    protected AccelerometerRecordEntity createFrom(AccelerometerRecord sensorRecord) {
-        return new AccelerometerRecordEntity(sensorRecord);
+    protected GravityRecordEntity createFrom(GravityRecord sensorRecord) {
+        return new GravityRecordEntity(sensorRecord);
     }
 
     @Override
-    protected AccelerometerRecord transformIn(AccelerometerRecordEntity entity) {
+    protected GravityRecord transformIn(GravityRecordEntity entity) {
         return entity.toSensorRecord();
     }
 }
