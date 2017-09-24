@@ -1,9 +1,9 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
-import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
-import com.ubikgs.androidsensors.records.imu.GravityRecord;
+import com.ubikgs.androidsensors.records.imu.GyroscopeRecord;
 
 import javax.inject.Inject;
 
@@ -23,20 +23,20 @@ import javax.inject.Inject;
  * limitations under the License.
  */
 
-public class GravityRecordRepository extends AbstractSensorRecordRepository<GravityRecord, GravityRecordEntity> {
+public class GyroscopeRecordRepository extends AbstractSensorRecordRepository<GyroscopeRecord, GyroscopeRecordEntity> {
 
     @Inject
-    public GravityRecordRepository(GravityRecordEntityDao sensorRecordEntityDao) {
+    public GyroscopeRecordRepository(GyroscopeRecordEntityDao sensorRecordEntityDao) {
         super(sensorRecordEntityDao);
     }
 
     @Override
-    protected GravityRecordEntity createFrom(GravityRecord sensorRecord) {
-        return new GravityRecordEntity(sensorRecord);
+    protected GyroscopeRecordEntity createFrom(GyroscopeRecord sensorRecord) {
+        return new GyroscopeRecordEntity(sensorRecord);
     }
 
     @Override
-    protected GravityRecord transformIn(GravityRecordEntity entity) {
+    protected GyroscopeRecord transformIn(GyroscopeRecordEntity entity) {
         return entity.toSensorRecord();
     }
 }
