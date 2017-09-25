@@ -37,7 +37,7 @@ import dagger.Provides;
  * limitations under the License.
  */
 @Module
-public class DatabaseModule {
+public class AndroidSensorsPersistenceDaoModule {
 
     @Provides
     @Singleton

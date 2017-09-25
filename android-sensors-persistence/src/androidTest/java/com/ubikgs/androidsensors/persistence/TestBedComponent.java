@@ -10,7 +10,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDaoIn
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDaoTest;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.modules.DatabaseModule;
+import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceDaoModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
 
@@ -37,7 +37,7 @@ import dagger.Component;
 @Component(modules = {
         TestBedModule.class,
         TestConfigModule.class,
-        DatabaseModule.class
+        AndroidSensorsPersistenceDaoModule.class
 })
 public interface TestBedComponent {
     void inject(AccelerometerRecordEntityDaoIntegrationTest test);
