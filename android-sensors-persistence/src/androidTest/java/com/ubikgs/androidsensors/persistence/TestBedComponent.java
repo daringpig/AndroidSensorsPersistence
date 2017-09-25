@@ -1,28 +1,28 @@
 package com.ubikgs.androidsensors.persistence;
 
-import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDaoTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDaoIntegrationTest;
-import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.gps.LocationEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDaoTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceDaoModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
-import com.ubikgs.androidsensors.persistence.repositories.gps.LocationRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSMeasurementsRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSNavigationRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSStatusRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.GravityRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRecordRepositoryIntegrationTest;
-import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.LocationRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSMeasurementsRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSNavigationRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSStatusRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GravityRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRepositoryIntegrationTest;
 
 import javax.inject.Singleton;
 
@@ -50,45 +50,45 @@ import dagger.Component;
         AndroidSensorsPersistenceDaoModule.class
 })
 public interface TestBedComponent {
-    void inject(AccelerometerRecordEntityDaoIntegrationTest test);
+    void inject(AccelerometerEntityDaoIntegrationTest test);
 
-    void inject(GravityRecordEntityDaoIntegrationTest test);
+    void inject(GravityEntityDaoIntegrationTest test);
 
-    void inject(GyroscopeRecordEntityDaoIntegrationTest test);
+    void inject(GyroscopeEntityDaoIntegrationTest test);
 
-    void inject(LinearAccelerationRecordEntityDaoTest test);
+    void inject(LinearAccelerationEntityDaoTest test);
 
-    void inject(MagneticFieldRecordEntityDaoIntegrationTest test);
+    void inject(MagneticFieldEntityDaoIntegrationTest test);
 
-    void inject(RotationVectorRecordEntityDaoIntegrationTest test);
+    void inject(RotationVectorEntityDaoIntegrationTest test);
 
-    void inject(LocationRecordEntityDaoIntegrationTest test);
+    void inject(LocationEntityDaoIntegrationTest test);
 
-    void inject(RawGPSMeasurementsRecordEntityDaoIntegrationTest test);
+    void inject(RawGPSMeasurementsEntityDaoIntegrationTest test);
 
-    void inject(RawGPSNavigationRecordEntityDaoIntegrationTest test);
+    void inject(RawGPSNavigationEntityDaoIntegrationTest test);
 
-    void inject(RawGPSStatusRecordEntityDaoIntegrationTest test);
+    void inject(RawGPSStatusEntityDaoIntegrationTest test);
 
-    void inject(AccelerometerRecordRepositoryIntegrationTest test);
+    void inject(AccelerometerRepositoryIntegrationTest test);
 
-    void inject(GravityRecordRepositoryIntegrationTest test);
+    void inject(GravityRepositoryIntegrationTest test);
 
-    void inject(GyroscopeRecordRepositoryIntegrationTest test);
+    void inject(GyroscopeRepositoryIntegrationTest test);
 
-    void inject(LinearAccelerationRecordRepositoryIntegrationTest test);
+    void inject(LinearAccelerationRepositoryIntegrationTest test);
 
-    void inject(MagneticFieldRecordRepositoryIntegrationTest test);
+    void inject(MagneticFieldRepositoryIntegrationTest test);
 
-    void inject(RotationVectorRecordRepositoryIntegrationTest test);
+    void inject(RotationVectorRepositoryIntegrationTest test);
 
-    void inject(LocationRecordRepositoryIntegrationTest test);
+    void inject(LocationRepositoryIntegrationTest test);
 
-    void inject(RawGPSMeasurementsRecordRepositoryIntegrationTest test);
+    void inject(RawGPSMeasurementsRepositoryIntegrationTest test);
 
-    void inject(RawGPSNavigationRecordRepositoryIntegrationTest test);
+    void inject(RawGPSNavigationRepositoryIntegrationTest test);
 
-    void inject(RawGPSStatusRecordRepositoryIntegrationTest test);
+    void inject(RawGPSStatusRepositoryIntegrationTest test);
 
     void inject(AndroidSensorsPersistenceIntegrationTest test);
 }

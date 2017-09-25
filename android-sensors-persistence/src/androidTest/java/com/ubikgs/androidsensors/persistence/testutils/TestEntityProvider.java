@@ -1,15 +1,15 @@
 package com.ubikgs.androidsensors.persistence.testutils;
 
-import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.LocationEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GravityEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorEntity;
 import com.ubikgs.androidsensors.records.SensorRecord;
 import com.ubikgs.androidsensors.records.gps.LocationRecord;
 import com.ubikgs.androidsensors.records.gps.RawGPSMeasurementsRecord;
@@ -46,43 +46,43 @@ public class TestEntityProvider {
 
     private static Random random = new Random();
 
-    public static AccelerometerRecordEntity createAccelerometerRecordEntity() {
-        AccelerometerRecordEntity entity = new AccelerometerRecordEntity();
+    public static AccelerometerEntity createAccelerometerRecordEntity() {
+        AccelerometerEntity entity = new AccelerometerEntity();
         initializeSensorRecordFields(entity);
         initializeTriAxisRecordFields(entity);
         return entity;
     }
 
-    public static GravityRecordEntity createGravityRecordEntity() {
-        GravityRecordEntity entity = new GravityRecordEntity();
+    public static GravityEntity createGravityRecordEntity() {
+        GravityEntity entity = new GravityEntity();
         initializeSensorRecordFields(entity);
         initializeTriAxisRecordFields(entity);
         return entity;
     }
 
-    public static GyroscopeRecordEntity createGyroscopeRecordEntity() {
-        GyroscopeRecordEntity entity = new GyroscopeRecordEntity();
+    public static GyroscopeEntity createGyroscopeRecordEntity() {
+        GyroscopeEntity entity = new GyroscopeEntity();
         initializeSensorRecordFields(entity);
         initializeTriAxisRecordFields(entity);
         return entity;
     }
 
-    public static LinearAccelerationRecordEntity createLinearAccelerationRecordEntity() {
-        LinearAccelerationRecordEntity entity = new LinearAccelerationRecordEntity();
+    public static LinearAccelerationEntity createLinearAccelerationRecordEntity() {
+        LinearAccelerationEntity entity = new LinearAccelerationEntity();
         initializeSensorRecordFields(entity);
         initializeTriAxisRecordFields(entity);
         return entity;
     }
 
-    public static MagneticFieldRecordEntity createMagneticFieldRecordEntity() {
-        MagneticFieldRecordEntity entity = new MagneticFieldRecordEntity();
+    public static MagneticFieldEntity createMagneticFieldRecordEntity() {
+        MagneticFieldEntity entity = new MagneticFieldEntity();
         initializeSensorRecordFields(entity);
         initializeTriAxisRecordFields(entity);
         return entity;
     }
 
-    public static RotationVectorRecordEntity createRotationVectorRecordEntity() {
-        RotationVectorRecordEntity entity = new RotationVectorRecordEntity();
+    public static RotationVectorEntity createRotationVectorRecordEntity() {
+        RotationVectorEntity entity = new RotationVectorEntity();
         initializeSensorRecordFields(entity);
         entity.setXSin(random.nextFloat());
         entity.setYSin(random.nextFloat());
@@ -91,8 +91,8 @@ public class TestEntityProvider {
         return entity;
     }
 
-    public static LocationRecordEntity createLocationRecordEntity() {
-        LocationRecordEntity entity = new LocationRecordEntity();
+    public static LocationEntity createLocationRecordEntity() {
+        LocationEntity entity = new LocationEntity();
         initializeSensorRecordFields(entity);
         entity.setLatitude(random.nextDouble());
         entity.setLongitude(random.nextDouble());
@@ -102,8 +102,8 @@ public class TestEntityProvider {
         return entity;
     }
 
-    public static RawGPSMeasurementsRecordEntity createRawGPSMeasurementsRecordEntity() {
-        RawGPSMeasurementsRecordEntity entity = new RawGPSMeasurementsRecordEntity();
+    public static RawGPSMeasurementsEntity createRawGPSMeasurementsRecordEntity() {
+        RawGPSMeasurementsEntity entity = new RawGPSMeasurementsEntity();
         entity.setSatelliteCount(random.nextInt(3));
         entity.setSvids(generateRandomIntArray());
         entity.setConstellations(generateRandomIntArray());
@@ -121,8 +121,8 @@ public class TestEntityProvider {
         return entity;
     }
 
-    public static RawGPSNavigationRecordEntity createRawGPSNavigationRecordEntity() {
-        RawGPSNavigationRecordEntity entity = new RawGPSNavigationRecordEntity();
+    public static RawGPSNavigationEntity createRawGPSNavigationRecordEntity() {
+        RawGPSNavigationEntity entity = new RawGPSNavigationEntity();
         entity.setAccuracy(random.nextFloat());
         entity.setSensorTimestamp(new Date().getTime());
         entity.setSystemTimestamp(new Date().getTime());
@@ -130,8 +130,8 @@ public class TestEntityProvider {
         return entity;
     }
 
-    public static RawGPSStatusRecordEntity createRawGPSStatusRecordEntity() {
-        RawGPSStatusRecordEntity entity = new RawGPSStatusRecordEntity();
+    public static RawGPSStatusEntity createRawGPSStatusRecordEntity() {
+        RawGPSStatusEntity entity = new RawGPSStatusEntity();
         entity.setAccuracy(random.nextFloat());
         entity.setSensorTimestamp(new Date().getTime());
         entity.setSystemTimestamp(new Date().getTime());

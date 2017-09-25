@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ae7f3b141479d1e658b370e96a46cdea",
+    "identityHash": "c5bde1ef5488d6d0707f1c8714524c67",
     "entities": [
       {
-        "tableName": "AccelerometerRecordEntity",
+        "tableName": "AccelerometerEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -65,18 +65,18 @@
         },
         "indices": [
           {
-            "name": "index_AccelerometerRecordEntity_foreignKey",
+            "name": "index_AccelerometerEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_AccelerometerRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_AccelerometerEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "GravityRecordEntity",
+        "tableName": "GravityEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -136,18 +136,18 @@
         },
         "indices": [
           {
-            "name": "index_GravityRecordEntity_foreignKey",
+            "name": "index_GravityEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_GravityRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_GravityEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "GyroscopeRecordEntity",
+        "tableName": "GyroscopeEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -207,18 +207,18 @@
         },
         "indices": [
           {
-            "name": "index_GyroscopeRecordEntity_foreignKey",
+            "name": "index_GyroscopeEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_GyroscopeRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_GyroscopeEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "LinearAccelerationRecordEntity",
+        "tableName": "LinearAccelerationEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -278,18 +278,18 @@
         },
         "indices": [
           {
-            "name": "index_LinearAccelerationRecordEntity_foreignKey",
+            "name": "index_LinearAccelerationEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_LinearAccelerationRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_LinearAccelerationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "MagneticFieldRecordEntity",
+        "tableName": "MagneticFieldEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -349,18 +349,18 @@
         },
         "indices": [
           {
-            "name": "index_MagneticFieldRecordEntity_foreignKey",
+            "name": "index_MagneticFieldEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_MagneticFieldRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_MagneticFieldEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "RotationVectorRecordEntity",
+        "tableName": "RotationVectorEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `xSin` REAL NOT NULL, `ySin` REAL NOT NULL, `zSin` REAL NOT NULL, `cos` REAL NOT NULL, `headingAccuracy` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -432,18 +432,18 @@
         },
         "indices": [
           {
-            "name": "index_RotationVectorRecordEntity_foreignKey",
+            "name": "index_RotationVectorEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_RotationVectorRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_RotationVectorEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "LocationRecordEntity",
+        "tableName": "LocationEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `altitude` REAL NOT NULL, `speed` REAL NOT NULL, `bearing` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -515,18 +515,18 @@
         },
         "indices": [
           {
-            "name": "index_LocationRecordEntity_foreignKey",
+            "name": "index_LocationEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_LocationRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_LocationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "RawGPSMeasurementsRecordEntity",
+        "tableName": "RawGPSMeasurementsEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `svids` TEXT, `constellations` TEXT, `timeOffsets` TEXT, `stateCodes` TEXT, `svTimes` TEXT, `svTimeUncerts` TEXT, `cn0DbHzs` TEXT, `pseudoranges` TEXT, `pseudorangeUncerts` TEXT, `deltaStates` TEXT, `deltas` TEXT, `deltaUncerts` TEXT, `multipaths` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -652,18 +652,18 @@
         },
         "indices": [
           {
-            "name": "index_RawGPSMeasurementsRecordEntity_foreignKey",
+            "name": "index_RawGPSMeasurementsEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_RawGPSMeasurementsRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_RawGPSMeasurementsEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "RawGPSNavigationRecordEntity",
+        "tableName": "RawGPSNavigationEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `message` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -711,18 +711,18 @@
         },
         "indices": [
           {
-            "name": "index_RawGPSNavigationRecordEntity_foreignKey",
+            "name": "index_RawGPSNavigationEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_RawGPSNavigationRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_RawGPSNavigationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
       },
       {
-        "tableName": "RawGPSStatusRecordEntity",
+        "tableName": "RawGPSStatusEntity",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `azimuths` TEXT, `cn0DHzs` TEXT, `constellationTypes` TEXT, `elevations` TEXT, `svids` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
         "fields": [
           {
@@ -800,12 +800,12 @@
         },
         "indices": [
           {
-            "name": "index_RawGPSStatusRecordEntity_foreignKey",
+            "name": "index_RawGPSStatusEntity_foreignKey",
             "unique": false,
             "columnNames": [
               "foreignKey"
             ],
-            "createSql": "CREATE  INDEX `index_RawGPSStatusRecordEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+            "createSql": "CREATE  INDEX `index_RawGPSStatusEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
           }
         ],
         "foreignKeys": []
@@ -813,7 +813,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ae7f3b141479d1e658b370e96a46cdea\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c5bde1ef5488d6d0707f1c8714524c67\")"
     ]
   }
 }

@@ -3,16 +3,16 @@ package com.ubikgs.androidsensors.persistence.modules;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.LocationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDao;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
 
 import javax.inject.Named;
@@ -48,61 +48,61 @@ public class AndroidSensorsPersistenceDaoModule {
 
     @Provides
     @Singleton
-    AccelerometerRecordEntityDao provideAccelerometerRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.accelerometerRecordEntityDao();
+    AccelerometerEntityDao provideAccelerometerRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.accelerometerEntityDao();
     }
 
     @Provides
     @Singleton
-    GravityRecordEntityDao provideGravityRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.gravityRecordEntityDao();
+    GravityEntityDao provideGravityRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.gravityEntityDao();
     }
 
     @Provides
     @Singleton
-    GyroscopeRecordEntityDao provideGyroscopeRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.gyroscopeRecordEntityDao();
+    GyroscopeEntityDao provideGyroscopeRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.gyroscopeEntityDao();
     }
 
     @Provides
     @Singleton
-    LinearAccelerationRecordEntityDao provideLinearAccelerationRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.linearAccelerationRecordEntityDao();
+    LinearAccelerationEntityDao provideLinearAccelerationRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.linearAccelerationEntityDao();
     }
 
     @Provides
     @Singleton
-    MagneticFieldRecordEntityDao provideMagneticFieldRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.magneticFieldRecordEntityDao();
+    MagneticFieldEntityDao provideMagneticFieldRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.magneticFieldEntityDao();
     }
 
     @Provides
     @Singleton
-    RotationVectorRecordEntityDao provideRotationVectorRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.rotationVectorRecordEntityDao();
+    RotationVectorEntityDao provideRotationVectorRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rotationVectorEntityDao();
     }
 
     @Provides
     @Singleton
-    LocationRecordEntityDao provideLocationRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.locationRecordEntityDao();
+    LocationEntityDao provideLocationRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.locationEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSMeasurementsRecordEntityDao provideRawGPSMeasurementsRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.rawGPSMeasurementsRecordEntityDao();
+    RawGPSMeasurementsEntityDao provideRawGPSMeasurementsRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rawGPSMeasurementsEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSNavigationRecordEntityDao provideRawGPSNavigationRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.rawGPSNavigationRecordEntityDao();
+    RawGPSNavigationEntityDao provideRawGPSNavigationRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rawGPSNavigationEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSStatusRecordEntityDao provideRawGPSStatusRecordEntityDao(AndroidSensorsDatabase database) {
-        return database.rawGPSStatusRecordEntityDao();
+    RawGPSStatusEntityDao provideRawGPSStatusRecordEntityDao(AndroidSensorsDatabase database) {
+        return database.rawGPSStatusEntityDao();
     }
 }

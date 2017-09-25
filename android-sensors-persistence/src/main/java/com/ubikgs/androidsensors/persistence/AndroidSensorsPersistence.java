@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.modules.AndroidSystemModule;
 import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceConfigModule;
-import com.ubikgs.androidsensors.persistence.repositories.SensorRecordRepository;
+import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,10 +33,10 @@ import javax.inject.Inject;
 public class AndroidSensorsPersistence {
 
 
-    @Inject Set<SensorRecordRepository> sensorRecordRepositories;
+    @Inject Set<RecordRepository> recordRepositories;
 
-    private final Map<Class<? extends SensorRecordRepository>, SensorRecordRepository> mappedRepositoriesByClass;
-    private final Map<SensorType, SensorRecordRepository> mappedRepositoriesByType;
+    private final Map<Class<? extends RecordRepository>, RecordRepository> mappedRepositoriesByClass;
+    private final Map<SensorType, RecordRepository> mappedRepositoriesByType;
 
     private AndroidSensorsPersistence(Context context, String sensorsDBName) {
 
@@ -54,26 +54,26 @@ public class AndroidSensorsPersistence {
     }
 
     private void createRepositoriesMap() {
-        for (SensorRecordRepository repository : sensorRecordRepositories) {
+        for (RecordRepository repository : recordRepositories) {
             mappedRepositoriesByClass.put(repository.getClass(), repository);
             mappedRepositoriesByType.put(repository.getSensorType(), repository);
         }
     }
 
-    public Set<SensorRecordRepository> allSensorRecordRepositories() {
-        return new HashSet<>(sensorRecordRepositories);
+    public Set<RecordRepository> allRecordRepositories() {
+        return new HashSet<>(recordRepositories);
     }
 
-    public <T extends SensorRecordRepository> T sensorRecordRepository(Class<T> type) {
+    public <T extends RecordRepository> T recordRepository(Class<T> type) {
         if (!mappedRepositoriesByClass.containsKey(type))
-            throw new SensorRecordRepositoryNotAvailableException(type);
+            throw new RepositoryNotAvailableException(type);
 
         return (T) mappedRepositoriesByClass.get(type);
     }
 
-    public SensorRecordRepository sensorRecordRepositoryBy(SensorType sensorType) {
+    public RecordRepository recordRepositoryBy(SensorType sensorType) {
         if (!mappedRepositoriesByType.containsKey(sensorType))
-            throw new SensorRecordRepositoryNotAvailableException(sensorType);
+            throw new RepositoryNotAvailableException(sensorType);
 
         return mappedRepositoriesByType.get(sensorType);
     }

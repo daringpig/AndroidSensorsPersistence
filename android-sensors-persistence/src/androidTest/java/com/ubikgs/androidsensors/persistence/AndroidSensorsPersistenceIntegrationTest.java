@@ -3,8 +3,8 @@ package com.ubikgs.androidsensors.persistence;
 import android.content.Context;
 
 import com.ubikgs.androidsensors.SensorType;
-import com.ubikgs.androidsensors.persistence.repositories.SensorRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRecordRepository;
+import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,36 +35,36 @@ public class AndroidSensorsPersistenceIntegrationTest {
 
     @Inject Context context;
 
-    private AndroidSensorsPersistence defaultAndroidSensorsPersistence;
+    private AndroidSensorsPersistence androidSensorsPersistence;
 
     @Before
     public void setUp() throws Exception {
         DaggerTestBedComponent.create().inject(this);
 
-        defaultAndroidSensorsPersistence = AndroidSensorsPersistence
+        androidSensorsPersistence = AndroidSensorsPersistence
                 .builder()
                 .build(context);
     }
 
     @Test
     public void recordRepositories_withDefaultConfigIsEmpty_isFalse() throws Exception {
-        boolean empty = defaultAndroidSensorsPersistence.allSensorRecordRepositories().isEmpty();
+        boolean empty = androidSensorsPersistence.allRecordRepositories().isEmpty();
         assertThat(empty, is(false));
     }
 
     @Test
     public void recordRepository_withDefaultConfig_returnsAccelerometerRepository() throws Exception {
-        AccelerometerRecordRepository accelerometerRecordRepository =
-                defaultAndroidSensorsPersistence.sensorRecordRepository(AccelerometerRecordRepository.class);
+        AccelerometerRepository accelerometerRepository =
+                androidSensorsPersistence.recordRepository(AccelerometerRepository.class);
 
-        assertThat(accelerometerRecordRepository, not(equalTo(null)));
+        assertThat(accelerometerRepository, not(equalTo(null)));
     }
 
     @Test
     public void recordRepositoryBy_withDefaultConfig_returnsAccelerometerRepository() throws Exception {
-        SensorRecordRepository sensorRecordRepository =
-                defaultAndroidSensorsPersistence.sensorRecordRepositoryBy(SensorType.ACCELEROMETER);
+        RecordRepository recordRepository =
+                androidSensorsPersistence.recordRepositoryBy(SensorType.ACCELEROMETER);
 
-        assertThat(sensorRecordRepository, not(equalTo(null)));
+        assertThat(recordRepository, not(equalTo(null)));
     }
 }

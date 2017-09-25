@@ -1,16 +1,16 @@
 package com.ubikgs.androidsensors.persistence.modules;
 
-import com.ubikgs.androidsensors.persistence.repositories.SensorRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.gps.LocationRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSMeasurementsRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSNavigationRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSStatusRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.GravityRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRecordRepository;
-import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRecordRepository;
+import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
+import com.ubikgs.androidsensors.persistence.repositories.gps.LocationRepository;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSMeasurementsRepository;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSNavigationRepository;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSStatusRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GravityRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRepository;
+import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -40,28 +40,28 @@ public class AndroidSensorsPersistenceRepositoryModule {
 
     @Provides
     @ElementsIntoSet
-    Set<SensorRecordRepository> provideAllSensorRecordRepositories(
-            AccelerometerRecordRepository accelerometerRecordRepository,
-            GravityRecordRepository gravityRecordRepository,
-            GyroscopeRecordRepository gyroscopeRecordRepository,
-            LinearAccelerationRecordRepository linearAccelerationRecordRepository,
-            MagneticFieldRecordRepository magneticFieldRecordRepository,
-            RotationVectorRecordRepository rotationVectorRecordRepository,
-            LocationRecordRepository locationRecordRepository,
-            RawGPSMeasurementsRecordRepository rawGPSMeasurementsRecordRepository,
-            RawGPSNavigationRecordRepository rawGPSNavigationRecordRepository,
-            RawGPSStatusRecordRepository rawGPSStatusRecordRepository) {
+    Set<RecordRepository> provideAllSensorRecordRepositories(
+            AccelerometerRepository accelerometerRepository,
+            GravityRepository gravityRepository,
+            GyroscopeRepository gyroscopeRepository,
+            LinearAccelerationRepository linearAccelerationRepository,
+            MagneticFieldRepository magneticFieldRepository,
+            RotationVectorRepository rotationVectorRepository,
+            LocationRepository locationRepository,
+            RawGPSMeasurementsRepository rawGPSMeasurementsRepository,
+            RawGPSNavigationRepository rawGPSNavigationRepository,
+            RawGPSStatusRepository rawGPSStatusRepository) {
 
         return new HashSet<>(Arrays.asList(
-                accelerometerRecordRepository,
-                gravityRecordRepository,
-                gyroscopeRecordRepository,
-                linearAccelerationRecordRepository,
-                magneticFieldRecordRepository,
-                rotationVectorRecordRepository,
-                locationRecordRepository,
-                rawGPSMeasurementsRecordRepository,
-                rawGPSNavigationRecordRepository,
-                rawGPSStatusRecordRepository));
+                accelerometerRepository,
+                gravityRepository,
+                gyroscopeRepository,
+                linearAccelerationRepository,
+                magneticFieldRepository,
+                rotationVectorRepository,
+                locationRepository,
+                rawGPSMeasurementsRepository,
+                rawGPSNavigationRepository,
+                rawGPSStatusRepository));
     }
 }

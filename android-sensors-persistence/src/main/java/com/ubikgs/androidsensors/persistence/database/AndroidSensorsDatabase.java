@@ -4,26 +4,26 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
-import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntityDao;
-import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEntity;
-import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEntity;
+import com.ubikgs.androidsensors.persistence.daos.gps.LocationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSNavigationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSStatusEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GravityEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDao;
+import com.ubikgs.androidsensors.persistence.entities.gps.LocationEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationEntity;
+import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GravityEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldEntity;
+import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorEntity;
 import com.ubikgs.androidsensors.persistence.typeconverters.DoubleArrayConverter;
 import com.ubikgs.androidsensors.persistence.typeconverters.FloatArrayConverter;
 import com.ubikgs.androidsensors.persistence.typeconverters.IntArrayConverter;
@@ -45,16 +45,16 @@ import com.ubikgs.androidsensors.persistence.typeconverters.LongArrayConverter;
  * limitations under the License.
  */
 @Database(entities = {
-        AccelerometerRecordEntity.class,
-        GravityRecordEntity.class,
-        GyroscopeRecordEntity.class,
-        LinearAccelerationRecordEntity.class,
-        MagneticFieldRecordEntity.class,
-        RotationVectorRecordEntity.class,
-        LocationRecordEntity.class,
-        RawGPSMeasurementsRecordEntity.class,
-        RawGPSNavigationRecordEntity.class,
-        RawGPSStatusRecordEntity.class
+        AccelerometerEntity.class,
+        GravityEntity.class,
+        GyroscopeEntity.class,
+        LinearAccelerationEntity.class,
+        MagneticFieldEntity.class,
+        RotationVectorEntity.class,
+        LocationEntity.class,
+        RawGPSMeasurementsEntity.class,
+        RawGPSNavigationEntity.class,
+        RawGPSStatusEntity.class
 }, version = 1)
 @TypeConverters({
         DoubleArrayConverter.class,
@@ -70,23 +70,23 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     * If you don't do so the sensors database will be wiped on every application using this library
     * */
 
-    public abstract AccelerometerRecordEntityDao accelerometerRecordEntityDao();
+    public abstract AccelerometerEntityDao accelerometerEntityDao();
 
-    public abstract GravityRecordEntityDao gravityRecordEntityDao();
+    public abstract GravityEntityDao gravityEntityDao();
 
-    public abstract GyroscopeRecordEntityDao gyroscopeRecordEntityDao();
+    public abstract GyroscopeEntityDao gyroscopeEntityDao();
 
-    public abstract LinearAccelerationRecordEntityDao linearAccelerationRecordEntityDao();
+    public abstract LinearAccelerationEntityDao linearAccelerationEntityDao();
 
-    public abstract MagneticFieldRecordEntityDao magneticFieldRecordEntityDao();
+    public abstract MagneticFieldEntityDao magneticFieldEntityDao();
 
-    public abstract RotationVectorRecordEntityDao rotationVectorRecordEntityDao();
+    public abstract RotationVectorEntityDao rotationVectorEntityDao();
 
-    public abstract LocationRecordEntityDao locationRecordEntityDao();
+    public abstract LocationEntityDao locationEntityDao();
 
-    public abstract RawGPSMeasurementsRecordEntityDao rawGPSMeasurementsRecordEntityDao();
+    public abstract RawGPSMeasurementsEntityDao rawGPSMeasurementsEntityDao();
 
-    public abstract RawGPSNavigationRecordEntityDao rawGPSNavigationRecordEntityDao();
+    public abstract RawGPSNavigationEntityDao rawGPSNavigationEntityDao();
 
-    public abstract RawGPSStatusRecordEntityDao rawGPSStatusRecordEntityDao();
+    public abstract RawGPSStatusEntityDao rawGPSStatusEntityDao();
 }
