@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEn
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createRotationVectorRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,28 +34,12 @@ public class RotationVectorRecordEntityDaoIntegrationTest extends SensorRecordEn
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = rotationVectorRecordEntityDao;
 
-        RotationVectorRecordEntity entity1 = new RotationVectorRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setXSin(1.0f);
-        entity1.setYSin(1.0f);
-        entity1.setZSin(1.0f);
-        entity1.setCos(1.0f);
+        RotationVectorRecordEntity entity1 = createRotationVectorRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        RotationVectorRecordEntity entity2 = new RotationVectorRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setXSin(1.0f);
-        entity2.setYSin(1.0f);
-        entity2.setZSin(1.0f);
-        entity2.setCos(1.0f);
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
-
         registerTestEntity(entity1);
+
+        RotationVectorRecordEntity entity2 = createRotationVectorRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
     }
 

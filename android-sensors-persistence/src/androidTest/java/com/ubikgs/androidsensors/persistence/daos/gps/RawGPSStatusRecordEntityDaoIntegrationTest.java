@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSStatusRecordEnti
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createRawGPSStatusRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,31 +34,12 @@ public class RawGPSStatusRecordEntityDaoIntegrationTest extends SensorRecordEnti
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = rawGPSStatusRecordEntityDao;
 
-        RawGPSStatusRecordEntity entity1 = new RawGPSStatusRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setSatelliteCount(1);
-        entity1.setAzimuths(new float[]{});
-        entity1.setCn0DHzs(new float[]{1.0f});
-        entity1.setConstellationTypes(new int[]{1});
-        entity1.setElevations(new float[]{1.0f, 2.0f});
-        entity1.setSvids(new int[]{1});
+        RawGPSStatusRecordEntity entity1 = createRawGPSStatusRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        RawGPSStatusRecordEntity entity2 = new RawGPSStatusRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setSatelliteCount(1);
-        entity2.setAzimuths(new float[]{});
-        entity2.setCn0DHzs(new float[]{1.0f});
-        entity2.setConstellationTypes(new int[]{1});
-        entity2.setElevations(new float[]{1.0f, 2.0f});
-        entity2.setSvids(new int[]{1});
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        RawGPSStatusRecordEntity entity2 = createRawGPSStatusRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
     }
 

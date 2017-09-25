@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsReco
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createRawGPSMeasurementsRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,68 +34,16 @@ public class RawGPSMeasurementsRecordEntityDaoIntegrationTest extends SensorReco
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = rawGPSMeasurementsRecordEntityDao;
 
-        RawGPSMeasurementsRecordEntity entity1 = new RawGPSMeasurementsRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setSatelliteCount(1);
-        entity1.setSvids(new int[]{1});
-        entity1.setConstellations(new int[]{1});
-        entity1.setTimeOffsets(new double[]{1.0f});
-        entity1.setStateCodes(new int[]{1});
-        entity1.setSvTimes(new long[]{1L});
-        entity1.setSvTimeUncerts(new long[]{1L});
-        entity1.setCn0DbHzs(new double[]{1.0f});
-        entity1.setPseudoranges(new double[]{1.0f});
-        entity1.setPseudorangeUncerts(new double[]{1.0f});
-        entity1.setDeltaStates(new int[]{1});
-        entity1.setDeltas(new double[]{1.0f});
-        entity1.setDeltaUncerts(new double[]{1.0f});
-        entity1.setMultipaths(new int[]{1});
+        RawGPSMeasurementsRecordEntity entity1 = createRawGPSMeasurementsRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        RawGPSMeasurementsRecordEntity entity2 = new RawGPSMeasurementsRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setSatelliteCount(1);
-        entity2.setSvids(new int[]{1});
-        entity2.setConstellations(new int[]{1});
-        entity2.setTimeOffsets(new double[]{1.0f});
-        entity2.setStateCodes(new int[]{1});
-        entity2.setSvTimes(new long[]{1L});
-        entity2.setSvTimeUncerts(new long[]{1L});
-        entity2.setCn0DbHzs(new double[]{1.0f});
-        entity2.setPseudoranges(new double[]{1.0f});
-        entity2.setPseudorangeUncerts(new double[]{1.0f});
-        entity2.setDeltaStates(new int[]{1});
-        entity2.setDeltas(new double[]{1.0f});
-        entity2.setDeltaUncerts(new double[]{1.0f});
-        entity2.setMultipaths(new int[]{1});
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
-        RawGPSMeasurementsRecordEntity entity3 = new RawGPSMeasurementsRecordEntity();
-        entity3.setAccuracy(1.0f);
-        entity3.setSensorTimestamp(new Date().getTime());
-        entity3.setSystemTimestamp(new Date().getTime());
-        entity3.setSatelliteCount(1);
-        entity3.setSvids(new int[]{});
-        entity3.setConstellations(new int[]{1,2});
-        entity3.setTimeOffsets(new double[]{});
-        entity3.setStateCodes(new int[]{1});
-        entity3.setSvTimes(new long[]{});
-        entity3.setSvTimeUncerts(new long[]{1L, 2L});
-        entity3.setCn0DbHzs(new double[]{1.0f});
-        entity3.setPseudoranges(new double[]{1.0f, 2.0f});
-        entity3.setPseudorangeUncerts(new double[]{1.0f});
-        entity3.setDeltaStates(new int[]{1});
-        entity3.setDeltas(new double[]{1.0f});
-        entity3.setDeltaUncerts(new double[]{1.0f});
-        entity3.setMultipaths(new int[]{1});
-        entity3.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        RawGPSMeasurementsRecordEntity entity2 = createRawGPSMeasurementsRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
+
+        RawGPSMeasurementsRecordEntity entity3 = createRawGPSMeasurementsRecordEntity();
+        entity3.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity3);
     }
 

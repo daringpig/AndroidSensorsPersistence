@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEnt
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createMagneticFieldRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,25 +34,13 @@ public class MagneticFieldRecordEntityDaoIntegrationTest extends SensorRecordEnt
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = magneticFieldRecordEntityDao;
 
-        MagneticFieldRecordEntity entity1 = new MagneticFieldRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setX(1.0f);
-        entity1.setY(1.0f);
-        entity1.setZ(1.0f);
+        MagneticFieldRecordEntity entity1 = createMagneticFieldRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        MagneticFieldRecordEntity entity2 = new MagneticFieldRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setX(1.0f);
-        entity2.setY(1.0f);
-        entity2.setZ(1.0f);
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        MagneticFieldRecordEntity entity2 = createMagneticFieldRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
+
     }
 }

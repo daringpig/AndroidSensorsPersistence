@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createLocationRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,29 +34,12 @@ public class LocationRecordEntityDaoIntegrationTest extends SensorRecordEntityDa
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = locationRecordEntityDao;
 
-        LocationRecordEntity entity1 = new LocationRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setLatitude(1.0f);
-        entity1.setLongitude(1.0f);
-        entity1.setAltitude(1.0f);
-        entity1.setSpeed(1.0f);
-        entity1.setBearing(1.0f);
+        LocationRecordEntity entity1 = createLocationRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        LocationRecordEntity entity2 = new LocationRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setLatitude(1.0f);
-        entity2.setLongitude(1.0f);
-        entity2.setAltitude(1.0f);
-        entity2.setSpeed(1.0f);
-        entity2.setBearing(1.0f);
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        LocationRecordEntity entity2 = createLocationRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
     }
 

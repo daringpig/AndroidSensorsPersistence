@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEnt
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createAccelerometerRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -36,25 +36,12 @@ public class AccelerometerRecordEntityDaoIntegrationTest
 
         sensorRecordEntityDao = accelerometerRecordEntityDao;
 
-        AccelerometerRecordEntity entity1 = new AccelerometerRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setX(1.0f);
-        entity1.setY(1.0f);
-        entity1.setZ(1.0f);
+        AccelerometerRecordEntity entity1 = createAccelerometerRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        AccelerometerRecordEntity entity2 = new AccelerometerRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setX(1.0f);
-        entity2.setY(1.0f);
-        entity2.setZ(1.0f);
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        AccelerometerRecordEntity entity2 = createAccelerometerRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
     }
 }

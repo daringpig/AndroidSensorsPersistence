@@ -6,9 +6,9 @@ import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationRecord
 
 import org.junit.Before;
 
-import java.util.Date;
-
 import javax.inject.Inject;
+
+import static com.ubikgs.androidsensors.persistence.testutils.TestEntityProvider.createRawGPSNavigationRecordEntity;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -34,25 +34,12 @@ public class RawGPSNavigationRecordEntityDaoIntegrationTest extends SensorRecord
         DaggerTestBedComponent.create().inject(this);
         sensorRecordEntityDao = rawGPSNavigationRecordEntityDao;
 
-        RawGPSNavigationRecordEntity entity1 = new RawGPSNavigationRecordEntity();
-        entity1.setAccuracy(1.0f);
-        entity1.setSensorTimestamp(new Date().getTime());
-        entity1.setSystemTimestamp(new Date().getTime());
-        entity1.setMessage("Type = Glonass L1 C/A, Svid = 106, Status = ParityPassed, " +
-                "MessageId = -1, SubmessageId = 10, " +
-                "Data = {85, 108, 0, -33, 75, -112, -63, -8, 25, 25, 56}");
+        RawGPSNavigationRecordEntity entity1 = createRawGPSNavigationRecordEntity();
         entity1.setForeignKey(registerForeignKeyUsage(0));
-
-        RawGPSNavigationRecordEntity entity2 = new RawGPSNavigationRecordEntity();
-        entity2.setAccuracy(1.0f);
-        entity2.setSensorTimestamp(new Date().getTime());
-        entity2.setSystemTimestamp(new Date().getTime());
-        entity2.setMessage("Type = Glonass L1 C/A, Svid = 96, Status = ParityPassed, " +
-                "MessageId = -1, SubmessageId = 12, " +
-                "Data = {101, 116, -16, -64, -124, 32, -27, 20, 53, 88, -8}");
-        entity2.setForeignKey(registerForeignKeyUsage(1));
-
         registerTestEntity(entity1);
+
+        RawGPSNavigationRecordEntity entity2 = createRawGPSNavigationRecordEntity();
+        entity2.setForeignKey(registerForeignKeyUsage(1));
         registerTestEntity(entity2);
     }
 
