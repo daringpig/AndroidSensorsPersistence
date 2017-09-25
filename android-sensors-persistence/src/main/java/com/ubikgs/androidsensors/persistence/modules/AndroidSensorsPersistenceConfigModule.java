@@ -21,11 +21,17 @@ import dagger.Provides;
  * limitations under the License.
  */
 @Module
-public class ConfigModule {
+public class AndroidSensorsPersistenceConfigModule {
+
+    private String sensorsDBName;
+
+    public AndroidSensorsPersistenceConfigModule(String sensorsDBName) {
+        this.sensorsDBName = sensorsDBName;
+    }
 
     @Provides
     @Named("sensorsDBName")
     String provideSensorsDBName() {
-        return "android-sensors-database";
+        return sensorsDBName != null ? sensorsDBName : "android-sensors-database";
     }
 }
