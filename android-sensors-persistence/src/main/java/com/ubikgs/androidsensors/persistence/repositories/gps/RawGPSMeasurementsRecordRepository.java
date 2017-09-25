@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.gps;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.gps.RawGPSMeasurementsRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class RawGPSMeasurementsRecordRepository extends AbstractSensorRecordRepo
     @Override
     protected RawGPSMeasurementsRecord transformIn(RawGPSMeasurementsRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.RAW_GPS_MEASUREMENTS;
     }
 }

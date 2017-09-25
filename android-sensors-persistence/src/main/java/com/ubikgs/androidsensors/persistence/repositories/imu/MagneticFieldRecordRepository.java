@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class MagneticFieldRecordRepository extends AbstractSensorRecordRepositor
     @Override
     protected MagneticFieldRecord transformIn(MagneticFieldRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.MAGNETIC_FIELD;
     }
 }

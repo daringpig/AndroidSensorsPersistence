@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class LinearAccelerationRecordRepository extends AbstractSensorRecordRepo
     @Override
     protected LinearAccelerationRecord transformIn(LinearAccelerationRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.LINEAR_ACCELERATION;
     }
 }

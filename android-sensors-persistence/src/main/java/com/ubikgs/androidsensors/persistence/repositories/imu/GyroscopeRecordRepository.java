@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class GyroscopeRecordRepository extends AbstractSensorRecordRepository<Gy
     @Override
     protected GyroscopeRecord transformIn(GyroscopeRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.GYROSCOPE;
     }
 }

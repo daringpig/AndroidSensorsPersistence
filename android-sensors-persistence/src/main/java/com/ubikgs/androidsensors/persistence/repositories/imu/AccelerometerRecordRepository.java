@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.imu.AccelerometerRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.AccelerometerRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class AccelerometerRecordRepository extends AbstractSensorRecordRepositor
     @Override
     protected AccelerometerRecord transformIn(AccelerometerRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.ACCELEROMETER;
     }
 }

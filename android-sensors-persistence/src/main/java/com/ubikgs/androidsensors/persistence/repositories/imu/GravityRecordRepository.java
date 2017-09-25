@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.imu;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.imu.GravityRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.imu.GravityRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class GravityRecordRepository extends AbstractSensorRecordRepository<Grav
     @Override
     protected GravityRecord transformIn(GravityRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.GRAVITY;
     }
 }

@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories.gps;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.daos.gps.LocationRecordEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.gps.LocationRecordEntity;
 import com.ubikgs.androidsensors.persistence.repositories.AbstractSensorRecordRepository;
@@ -38,5 +39,10 @@ public class LocationRecordRepository extends AbstractSensorRecordRepository<Loc
     @Override
     protected LocationRecord transformIn(LocationRecordEntity entity) {
         return entity.toSensorRecord();
+    }
+
+    @Override
+    public SensorType getSensorType() {
+        return SensorType.LOCATION;
     }
 }

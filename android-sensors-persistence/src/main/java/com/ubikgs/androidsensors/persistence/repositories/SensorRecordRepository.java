@@ -1,5 +1,6 @@
 package com.ubikgs.androidsensors.persistence.repositories;
 
+import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.records.SensorRecord;
 
 import java.util.Collection;
@@ -40,4 +41,6 @@ public interface SensorRecordRepository<T extends SensorRecord> {
     Single<Long> countBy(long foreignKey);
 
     void removeAllBy(long foreignKey);
+
+    SensorType getSensorType();
 }
