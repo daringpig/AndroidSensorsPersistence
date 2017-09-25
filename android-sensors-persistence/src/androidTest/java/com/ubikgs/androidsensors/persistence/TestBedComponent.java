@@ -89,4 +89,6 @@ public interface TestBedComponent {
     void inject(RawGPSNavigationRecordRepositoryIntegrationTest test);
 
     void inject(RawGPSStatusRecordRepositoryIntegrationTest test);
+
+    void inject(AndroidSensorsPersistenceIntegrationTest test);
 }

@@ -1,5 +1,19 @@
 package com.ubikgs.androidsensors.persistence;
 
+import android.content.Context;
+
+import com.ubikgs.androidsensors.SensorType;
+import com.ubikgs.androidsensors.modules.AndroidSystemModule;
+import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceConfigModule;
+import com.ubikgs.androidsensors.persistence.repositories.SensorRecordRepository;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import javax.inject.Inject;
+
 /**
  * Copyright 2017 Alberto González Pérez
  * <p>
@@ -17,4 +31,78 @@ package com.ubikgs.androidsensors.persistence;
  */
 
 public class AndroidSensorsPersistence {
+
+
+    @Inject Set<SensorRecordRepository> sensorRecordRepositories;
+
+    private final Map<Class<? extends SensorRecordRepository>, SensorRecordRepository> mappedRepositoriesByClass;
+    private final Map<SensorType, SensorRecordRepository> mappedRepositoriesByType;
+
+    private AndroidSensorsPersistence(Context context, String sensorsDBName) {
+
+        this.mappedRepositoriesByClass = new HashMap<>();
+        this.mappedRepositoriesByType = new HashMap<>();
+
+        DaggerAndroidSensorsPersistenceComponent.builder()
+                .androidSystemModule(new AndroidSystemModule(context))
+                .androidSensorsPersistenceConfigModule(
+                        new AndroidSensorsPersistenceConfigModule(sensorsDBName))
+                .build()
+                .inject(this);
+
+        createRepositoriesMap();
+    }
+
+    private void createRepositoriesMap() {
+        for (SensorRecordRepository repository : sensorRecordRepositories) {
+            mappedRepositoriesByClass.put(repository.getClass(), repository);
+            mappedRepositoriesByType.put(repository.getSensorType(), repository);
+        }
+    }
+
+    public Set<SensorRecordRepository> allSensorRecordRepositories() {
+        return new HashSet<>(sensorRecordRepositories);
+    }
+
+    public <T extends SensorRecordRepository> T sensorRecordRepository(Class<T> type) {
+        if (!mappedRepositoriesByClass.containsKey(type))
+            throw new SensorRecordRepositoryNotAvailableException(type);
+
+        return (T) mappedRepositoriesByClass.get(type);
+    }
+
+    public SensorRecordRepository sensorRecordRepositoryBy(SensorType sensorType) {
+        if (!mappedRepositoriesByType.containsKey(sensorType))
+            throw new SensorRecordRepositoryNotAvailableException(sensorType);
+
+        return mappedRepositoriesByType.get(sensorType);
+    }
+
+    /*
+    * Builder
+    * */
+
+    public interface Builder {
+        Builder customSensorsDBName(String sensorsDBName);
+        AndroidSensorsPersistence build(Context applicationContext);
+    }
+
+    public static Builder builder() {
+
+        return new Builder() {
+
+            private String sensorsDBName;
+
+            @Override
+            public Builder customSensorsDBName(String sensorsDBName) {
+                this.sensorsDBName = sensorsDBName;
+                return this;
+            }
+
+            @Override
+            public AndroidSensorsPersistence build(Context applicationContext) {
+                return new AndroidSensorsPersistence(applicationContext, sensorsDBName);
+            }
+        };
+    }
 }
