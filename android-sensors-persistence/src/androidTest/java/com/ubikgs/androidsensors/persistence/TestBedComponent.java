@@ -13,6 +13,16 @@ import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorRecordEntity
 import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceDaoModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
+import com.ubikgs.androidsensors.persistence.repositories.gps.LocationRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSMeasurementsRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSNavigationRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.gps.RawGPSStatusRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GravityRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRecordRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRecordRepositoryIntegrationTest;
 
 import javax.inject.Singleton;
 
@@ -59,4 +69,24 @@ public interface TestBedComponent {
     void inject(RawGPSNavigationRecordEntityDaoIntegrationTest test);
 
     void inject(RawGPSStatusRecordEntityDaoIntegrationTest test);
+
+    void inject(AccelerometerRecordRepositoryIntegrationTest test);
+
+    void inject(GravityRecordRepositoryIntegrationTest test);
+
+    void inject(GyroscopeRecordRepositoryIntegrationTest test);
+
+    void inject(LinearAccelerationRecordRepositoryIntegrationTest test);
+
+    void inject(MagneticFieldRecordRepositoryIntegrationTest test);
+
+    void inject(RotationVectorRecordRepositoryIntegrationTest test);
+
+    void inject(LocationRecordRepositoryIntegrationTest test);
+
+    void inject(RawGPSMeasurementsRecordRepositoryIntegrationTest test);
+
+    void inject(RawGPSNavigationRecordRepositoryIntegrationTest test);
+
+    void inject(RawGPSStatusRecordRepositoryIntegrationTest test);
 }

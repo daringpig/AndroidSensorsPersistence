@@ -11,6 +11,16 @@ import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationReco
 import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldRecordEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorRecordEntity;
 import com.ubikgs.androidsensors.records.SensorRecord;
+import com.ubikgs.androidsensors.records.gps.LocationRecord;
+import com.ubikgs.androidsensors.records.gps.RawGPSMeasurementsRecord;
+import com.ubikgs.androidsensors.records.gps.RawGPSNavigationRecord;
+import com.ubikgs.androidsensors.records.gps.RawGPSStatusRecord;
+import com.ubikgs.androidsensors.records.imu.AccelerometerRecord;
+import com.ubikgs.androidsensors.records.imu.GravityRecord;
+import com.ubikgs.androidsensors.records.imu.GyroscopeRecord;
+import com.ubikgs.androidsensors.records.imu.LinearAccelerationRecord;
+import com.ubikgs.androidsensors.records.imu.MagneticFieldRecord;
+import com.ubikgs.androidsensors.records.imu.RotationVectorRecord;
 import com.ubikgs.androidsensors.records.imu.TriAxisRecord;
 
 import java.util.Date;
@@ -132,6 +142,46 @@ public class TestEntityProvider {
         entity.setElevations(generateRandomFloatArray());
         entity.setSvids(generateRandomIntArray());
         return entity;
+    }
+
+    public static AccelerometerRecord createAccelerometerRecord() {
+        return createAccelerometerRecordEntity().toSensorRecord();
+    }
+
+    public static GravityRecord createGravityRecord() {
+        return createGravityRecordEntity().toSensorRecord();
+    }
+
+    public static GyroscopeRecord createGyroscopeRecord() {
+        return createGyroscopeRecordEntity().toSensorRecord();
+    }
+
+    public static LinearAccelerationRecord createLinearAccelerationRecord() {
+        return createLinearAccelerationRecordEntity().toSensorRecord();
+    }
+
+    public static MagneticFieldRecord createMagneticFieldRecord() {
+        return createMagneticFieldRecordEntity().toSensorRecord();
+    }
+
+    public static RotationVectorRecord createRotationVectorRecord() {
+        return createRotationVectorRecordEntity().toSensorRecord();
+    }
+
+    public static LocationRecord createLocationRecord() {
+        return createLocationRecordEntity().toSensorRecord();
+    }
+
+    public static RawGPSMeasurementsRecord createRawGPSMeasurementsRecord() {
+        return createRawGPSMeasurementsRecordEntity().toSensorRecord();
+    }
+
+    public static RawGPSNavigationRecord createRawGPSNavigationRecord() {
+        return createRawGPSNavigationRecordEntity().toSensorRecord();
+    }
+
+    public static RawGPSStatusRecord createRawGPSStatusRecord() {
+        return createRawGPSStatusRecordEntity().toSensorRecord();
     }
 
     private static void initializeSensorRecordFields(SensorRecord sensorRecord) {
