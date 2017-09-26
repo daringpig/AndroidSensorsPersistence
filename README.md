@@ -1,4 +1,4 @@
-# AndroidSensorsPersistence [![Build Status](https://travis-ci.org/ubikgs/AndroidSensorsPersistence.svg?branch=master)](https://travis-ci.org/ubikgs/AndroidSensorsPersistence)
+# AndroidSensorsPersistence [![Build Status](https://travis-ci.org/ubikgs/AndroidSensorsPersistence.svg?branch=master)](https://travis-ci.org/ubikgs/AndroidSensorsPersistence) [ ![Download](https://api.bintray.com/packages/ubikgs/AndroidSensors/android-sensors-persistence/images/download.svg) ](https://bintray.com/ubikgs/AndroidSensors/android-sensors-persistence/_latestVersion)
 
 An [AndroidSensors](https://github.com/ubikgs/AndroidSensors) companion library.
 
