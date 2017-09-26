@@ -8,7 +8,7 @@ def projectVersion = '1.0.0-alpha3'
 version = projectVersion
 
 def repoName = 'AndroidSensors'
-description = 'A collection of abstractions that allows to easily store AndroidSensors records'
+description = 'An AndroidSensors companion library that allows to easily store AndroidSensors records'
 def projectUrl = 'https://github.com/ubikgs/' + repoName + 'Persistence'
 def vcs = projectUrl + '.git'
 
