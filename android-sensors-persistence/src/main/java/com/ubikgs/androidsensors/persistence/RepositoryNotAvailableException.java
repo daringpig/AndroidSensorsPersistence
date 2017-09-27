@@ -1,7 +1,6 @@
 package com.ubikgs.androidsensors.persistence;
 
 import com.ubikgs.androidsensors.SensorType;
-import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -21,12 +20,11 @@ import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
 
 public class RepositoryNotAvailableException extends RuntimeException {
 
-    public RepositoryNotAvailableException(Class<? extends RecordRepository> type) {
-        super(String.format("%s is not available on this device", type.getSimpleName()));
+    public RepositoryNotAvailableException(Class<?> type) {
+        super(String.format("There is no repository available for %s", type.getSimpleName()));
     }
 
     public RepositoryNotAvailableException(SensorType sensorType) {
-        super(String.format("%s is not available on this device", sensorType.name()));
+        super(String.format("%s has no repository", sensorType.name()));
     }
-
 }

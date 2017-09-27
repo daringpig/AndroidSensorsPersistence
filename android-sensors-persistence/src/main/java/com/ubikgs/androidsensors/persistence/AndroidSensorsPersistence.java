@@ -6,6 +6,7 @@ import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.modules.AndroidSystemModule;
 import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceConfigModule;
 import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
+import com.ubikgs.androidsensors.records.SensorRecord;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -37,11 +38,13 @@ public class AndroidSensorsPersistence {
 
     private final Map<Class<? extends RecordRepository>, RecordRepository> mappedRepositoriesByClass;
     private final Map<SensorType, RecordRepository> mappedRepositoriesByType;
+    private final Map<Class<? extends SensorRecord>,RecordRepository> mappedRepositoriesByRecordClass;
 
     private AndroidSensorsPersistence(Context context, String sensorsDBName) {
 
         this.mappedRepositoriesByClass = new HashMap<>();
         this.mappedRepositoriesByType = new HashMap<>();
+        this.mappedRepositoriesByRecordClass = new HashMap<>();
 
         DaggerAndroidSensorsPersistenceComponent.builder()
                 .androidSystemModule(new AndroidSystemModule(context))
@@ -57,6 +60,9 @@ public class AndroidSensorsPersistence {
         for (RecordRepository repository : recordRepositories) {
             mappedRepositoriesByClass.put(repository.getClass(), repository);
             mappedRepositoriesByType.put(repository.getSensorType(), repository);
+            mappedRepositoriesByRecordClass.put(
+                    repository.getSensorType().getRecordClass(), repository
+            );
         }
     }
 
@@ -76,6 +82,13 @@ public class AndroidSensorsPersistence {
             throw new RepositoryNotAvailableException(sensorType);
 
         return mappedRepositoriesByType.get(sensorType);
+    }
+
+    public <T extends SensorRecord> RecordRepository recordRepositoryBy(Class<T> recordClass) {
+        if (!mappedRepositoriesByRecordClass.containsKey(recordClass))
+            throw new RepositoryNotAvailableException(recordClass);
+
+        return mappedRepositoriesByRecordClass.get(recordClass);
     }
 
     /*

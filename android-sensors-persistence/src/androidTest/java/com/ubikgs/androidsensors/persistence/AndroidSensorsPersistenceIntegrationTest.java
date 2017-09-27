@@ -5,6 +5,7 @@ import android.content.Context;
 import com.ubikgs.androidsensors.SensorType;
 import com.ubikgs.androidsensors.persistence.repositories.RecordRepository;
 import com.ubikgs.androidsensors.persistence.repositories.imu.AccelerometerRepository;
+import com.ubikgs.androidsensors.records.imu.AccelerometerRecord;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,9 +62,17 @@ public class AndroidSensorsPersistenceIntegrationTest {
     }
 
     @Test
-    public void recordRepositoryBy_withDefaultConfig_returnsAccelerometerRepository() throws Exception {
+    public void recordRepositoryBySensorType_withDefaultConfig_returnsAccelerometerRepository() throws Exception {
         RecordRepository recordRepository =
                 androidSensorsPersistence.recordRepositoryBy(SensorType.ACCELEROMETER);
+
+        assertThat(recordRepository, not(equalTo(null)));
+    }
+
+    @Test
+    public void recordRepositoryBySensorRecord_withDefaultConfic_returnsAccelerometerRepository() throws Exception {
+        RecordRepository recordRepository =
+                androidSensorsPersistence.recordRepositoryBy(AccelerometerRecord.class);
 
         assertThat(recordRepository, not(equalTo(null)));
     }
