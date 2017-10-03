@@ -65,6 +65,6 @@ public class DoubleArrayConverterTest {
     public void deserialized_withEmptyArrayRepresentation_returnsEmptyArray() throws Exception {
         double[] deserialized = converter.deserialize("[]");
 
-        assertThat(deserialized, equalTo(new int[]{}));
+        assertThat(deserialized, equalTo(new double[]{}));
     }
 }

@@ -13,6 +13,7 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.functions.Function;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -43,27 +44,63 @@ public abstract class AbstractRecordRepository<T extends SensorRecord, E extends
 
     public Single<List<Long>> createAll(Collection<T> sensorRecords) {
         return Observable.fromIterable(sensorRecords)
-                .map(this::createFrom)
-                .toList()
-                .map(recordEntityDao::createAll);
-    }
-
-    public Single<List<Long>> createAll(Collection<T> sensorRecords, Long foreignKey) {
-        return Observable.fromIterable(sensorRecords)
-                .map(this::createFrom)
-                .map(e -> {
-                    e.setForeignKey(foreignKey);
-                    return e;
+                .map(new Function<T, E>() {
+                    @Override
+                    public E apply(T sensorRecord) throws Exception {
+                        return createFrom(sensorRecord);
+                    }
                 })
                 .toList()
-                .map(recordEntityDao::createAll);
+                .map(new Function<List<E>, List<Long>>() {
+                    @Override
+                    public List<Long> apply(List<E> sensorRecordEntities) throws Exception {
+                        return recordEntityDao.createAll(sensorRecordEntities);
+                    }
+                });
+    }
+
+    public Single<List<Long>> createAll(Collection<T> sensorRecords, final Long foreignKey) {
+        return Observable.fromIterable(sensorRecords)
+                .map(new Function<T, E>() {
+                    @Override
+                    public E apply(T sensorRecord) throws Exception {
+                        return createFrom(sensorRecord);
+                    }
+                })
+                .map(new Function<E, E>() {
+                    @Override
+                    public E apply(E sensorRecordEntity) throws Exception {
+                        sensorRecordEntity.setForeignKey(foreignKey);
+                        return sensorRecordEntity;
+                    }
+                })
+                .toList()
+                .map(new Function<List<E>, List<Long>>() {
+                    @Override
+                    public List<Long> apply(List<E> sensorRecordEntities) throws Exception {
+                        return recordEntityDao.createAll(sensorRecordEntities);
+                    }
+                });
     }
 
     protected abstract E createFrom(T sensorRecord);
 
     public Flowable<T> findAll() {
-        return findAllWith(this::count, findBucket ->
-                recordEntityDao.findAll(findBucket.getOffset(), findBucket.getLimit()));
+        return findAllWith(
+                new Counter() {
+                    @Override
+                    public Single<Long> count() {
+                        return recordEntityDao.count();
+                    }
+                },
+                new Finder<E>() {
+                    @Override
+                    public Single<List<E>> find(FindBucket findBucket) {
+                        return recordEntityDao.findAll(
+                                findBucket.getOffset(), findBucket.getLimit());
+                    }
+                }
+        );
     }
 
     public Single<Long> count() {
@@ -74,14 +111,21 @@ public abstract class AbstractRecordRepository<T extends SensorRecord, E extends
         recordEntityDao.removeAll();
     }
 
-    public Flowable<T> findAllBy(long foreignKey) {
+    public Flowable<T> findAllBy(final long foreignKey) {
         return findAllWith(
-                () -> countBy(foreignKey),
-                findBucket -> recordEntityDao.findAllBy(
-                        foreignKey,
-                        findBucket.getOffset(),
-                        findBucket.getLimit()
-                )
+                new Counter() {
+                    @Override
+                    public Single<Long> count() {
+                        return recordEntityDao.countBy(foreignKey);
+                    }
+                },
+                new Finder<E>() {
+                    @Override
+                    public Single<List<E>> find(FindBucket findBucket) {
+                        return recordEntityDao.findAllBy(
+                                foreignKey, findBucket.getOffset(), findBucket.getLimit());
+                    }
+                }
         );
     }
 
@@ -93,15 +137,43 @@ public abstract class AbstractRecordRepository<T extends SensorRecord, E extends
         recordEntityDao.removeAllBy(foreignKey);
     }
 
-    private Flowable<T> findAllWith(Counter counter, Finder<E> finder) {
+    private Flowable<T> findAllWith(Counter counter, final Finder<E> finder) {
         return counter.count()
-                .map(this::createFindBucketsFrom)
-                .flatMapObservable(Observable::fromIterable)
-                .flatMapSingle(finder::find)
-                .map(Observable::fromIterable)
-                .flatMap(accelerometerRecordEntityObservable ->
-                        accelerometerRecordEntityObservable
-                                .map(this::transformIn))
+                .map(new Function<Long, List<FindBucket>>() {
+                    @Override
+                    public List<FindBucket> apply(Long count) throws Exception {
+                        return createFindBucketsFrom(count);
+                    }
+                })
+                .flatMapObservable(new Function<List<FindBucket>, Observable<FindBucket>>() {
+                    @Override
+                    public Observable<FindBucket> apply(List<FindBucket> findBuckets) throws Exception {
+                        return Observable.fromIterable(findBuckets);
+                    }
+                })
+                .flatMapSingle(new Function<FindBucket, Single<List<E>>>() {
+                    @Override
+                    public Single<List<E>> apply(FindBucket findBucket) throws Exception {
+                        return finder.find(findBucket);
+                    }
+                })
+                .map(new Function<List<E>, Observable<E>>() {
+                    @Override
+                    public Observable<E> apply(List<E> entities) throws Exception {
+                        return Observable.fromIterable(entities);
+                    }
+                })
+                .flatMap(new Function<Observable<E>, Observable<T>>() {
+                    @Override
+                    public Observable<T> apply(Observable<E> recordEntityObservable) throws Exception {
+                        return recordEntityObservable.map(new Function<E, T>() {
+                            @Override
+                            public T apply(E entity) throws Exception {
+                                return transformIn(entity);
+                            }
+                        });
+                    }
+                })
                 .toFlowable(BackpressureStrategy.BUFFER);
     }
 

@@ -65,6 +65,6 @@ public class LongArrayConverterTest {
     public void deserialized_withEmptyArrayRepresentation_returnsEmptyArray() throws Exception {
         long[] deserialized = converter.deserialize("[]");
 
-        assertThat(deserialized, equalTo(new int[]{}));
+        assertThat(deserialized, equalTo(new long[]{}));
     }
 }

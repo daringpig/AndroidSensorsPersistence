@@ -65,6 +65,6 @@ public class FloatArrayConverterTest {
     public void deserialized_withEmptyArrayRepresentation_returnsEmptyArray() throws Exception {
         float[] deserialized = converter.deserialize("[]");
 
-        assertThat(deserialized, equalTo(new int[]{}));
+        assertThat(deserialized, equalTo(new float[]{}));
     }
 }

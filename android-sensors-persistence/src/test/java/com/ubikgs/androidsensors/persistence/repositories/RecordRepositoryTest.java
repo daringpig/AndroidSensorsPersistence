@@ -7,6 +7,7 @@ import com.ubikgs.androidsensors.records.SensorRecord;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
@@ -18,7 +19,6 @@ import io.reactivex.Single;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.mockito.ArgumentMatchers.anyCollection;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -61,13 +61,13 @@ public abstract class RecordRepositoryTest<T extends SensorRecord, E extends Rec
         Map<Long, T> recordsToCreate = provideSensorRecordsToCreate();
 
         List<Long> pKeys = new ArrayList<>(recordsToCreate.keySet());
-        when(recordEntityDao.createAll(anyCollection()))
+        when(recordEntityDao.createAll(ArgumentMatchers.<E>anyCollection()))
                 .thenReturn(pKeys);
 
         List<Long> keys = sensorRecordRepository.createAll(
                 provideSensorRecordsToCreate().values()).blockingGet();
 
-        verify(recordEntityDao, times(1)).createAll(anyCollection());
+        verify(recordEntityDao, times(1)).createAll(ArgumentMatchers.<E>anyCollection());
 
         assertThat(keys, equalTo(pKeys));
     }
@@ -77,13 +77,13 @@ public abstract class RecordRepositoryTest<T extends SensorRecord, E extends Rec
         Map<Long, T> recordsToCreate = provideSensorRecordsToCreate();
 
         List<Long> pKeys = new ArrayList<>(recordsToCreate.keySet());
-        when(recordEntityDao.createAll(anyCollection()))
+        when(recordEntityDao.createAll(ArgumentMatchers.<E>anyCollection()))
                 .thenReturn(pKeys);
 
         List<Long> keys = sensorRecordRepository.createAll(
                 provideSensorRecordsToCreate().values(), 0L).blockingGet();
 
-        verify(recordEntityDao, times(1)).createAll(anyCollection());
+        verify(recordEntityDao, times(1)).createAll(ArgumentMatchers.<E>anyCollection());
 
         assertThat(keys, equalTo(pKeys));
     }

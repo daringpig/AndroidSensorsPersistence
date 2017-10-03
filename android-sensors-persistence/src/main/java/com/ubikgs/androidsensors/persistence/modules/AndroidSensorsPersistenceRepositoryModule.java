@@ -52,7 +52,7 @@ public class AndroidSensorsPersistenceRepositoryModule {
             RawGPSNavigationRepository rawGPSNavigationRepository,
             RawGPSStatusRepository rawGPSStatusRepository) {
 
-        return new HashSet<>(Arrays.asList(
+        return new HashSet<RecordRepository>(Arrays.asList(
                 accelerometerRepository,
                 gravityRepository,
                 gyroscopeRepository,
