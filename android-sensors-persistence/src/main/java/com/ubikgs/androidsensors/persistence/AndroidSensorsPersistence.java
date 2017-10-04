@@ -70,6 +70,7 @@ public class AndroidSensorsPersistence {
         return new HashSet<>(recordRepositories);
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends RecordRepository> T recordRepository(Class<T> type) {
         if (!mappedRepositoriesByClass.containsKey(type))
             throw new RepositoryNotAvailableException(type);
