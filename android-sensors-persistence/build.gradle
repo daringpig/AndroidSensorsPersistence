@@ -100,9 +100,9 @@ dependencies {
     implementation 'com.ubikgs:android-sensors:1.0.0-alpha5'
 
     // Room Persistence Library
-    implementation 'android.arch.persistence.room:runtime:1.0.0-alpha9-1'
-    implementation 'android.arch.persistence.room:rxjava2:1.0.0-alpha9-1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0-alpha9-1'
+    implementation 'android.arch.persistence.room:runtime:1.0.0-beta1'
+    implementation 'android.arch.persistence.room:rxjava2:1.0.0-beta1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0-beta1'
 
     /*
     * Testing
@@ -115,7 +115,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.7.14'
 
     // Room Migration Testing
-    testImplementation 'android.arch.persistence.room:testing:1.0.0-alpha9-1'
+    testImplementation 'android.arch.persistence.room:testing:1.0.0-beta1'
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
