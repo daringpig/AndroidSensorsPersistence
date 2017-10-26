@@ -97,7 +97,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
 
     // AndroidSensors
-    implementation 'com.ubikgs:android-sensors:1.0.0-alpha5'
+    implementation 'com.ubikgs:android-sensors:1.0.0-alpha6'
 
     // Room Persistence Library
     implementation 'android.arch.persistence.room:runtime:1.0.0-rc1'
