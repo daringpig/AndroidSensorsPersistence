@@ -25,6 +25,7 @@ import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRepositor
 import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRepositoryIntegrationTest;
 import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRepositoryIntegrationTest;
 import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRepositoryIntegrationTest;
+import com.ubikgs.androidsensors.persistence.repositories.wifi.WifiMeasurementsRepositoryIntegrationTest;
 
 import javax.inject.Singleton;
 
@@ -97,4 +98,6 @@ public interface TestBedComponent {
     void inject(WifiMeasurementsEntityDaoIntegrationTest test);
 
     void inject(MigrationTest test);
+
+    void inject(WifiMeasurementsRepositoryIntegrationTest test);
 }

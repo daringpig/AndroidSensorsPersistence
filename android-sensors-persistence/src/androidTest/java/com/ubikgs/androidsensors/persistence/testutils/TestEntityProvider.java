@@ -23,6 +23,7 @@ import com.ubikgs.androidsensors.records.imu.LinearAccelerationRecord;
 import com.ubikgs.androidsensors.records.imu.MagneticFieldRecord;
 import com.ubikgs.androidsensors.records.imu.RotationVectorRecord;
 import com.ubikgs.androidsensors.records.imu.TriAxisRecord;
+import com.ubikgs.androidsensors.records.wifi.WifiMeasurementsRecord;
 
 import java.util.Date;
 import java.util.Random;
@@ -204,6 +205,10 @@ public class TestEntityProvider {
 
     public static RawGPSStatusRecord createRawGPSStatusRecord() {
         return createRawGPSStatusRecordEntity().toSensorRecord();
+    }
+
+    public static WifiMeasurementsRecord createWifiMeasurementsRecord() {
+        return createWifiMeasurementsEntity().toSensorRecord();
     }
 
     private static void initializeSensorRecordFields(SensorRecord sensorRecord) {

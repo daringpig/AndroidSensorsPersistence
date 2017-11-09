@@ -10,6 +10,7 @@ import com.ubikgs.androidsensors.persistence.DaggerTestBedComponent;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -47,6 +48,7 @@ public class MigrationTest {
         DaggerTestBedComponent.create().inject(this);
     }
 
+    @Ignore // Has been tested with a different mechanism
     @Test
     public void migrate1To2() throws Exception {
         SupportSQLiteDatabase db = helper.createDatabase(dbName, 1);
