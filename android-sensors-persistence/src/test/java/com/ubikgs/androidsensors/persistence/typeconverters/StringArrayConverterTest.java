@@ -35,10 +35,28 @@ public class StringArrayConverterTest {
     public void serializeAndDeserialize_areReversible() throws Exception {
         String[] array = new String[]{"ooo", "oo", "o"};
 
-        String serialized = converter.serialize(array);
-        String[] deserialized = converter.deserialize(serialized);
+        assertEqualsAfterSerializationDeserializationProcess(array);
+    }
 
-        assertThat(deserialized, equalTo(array));
+    @Test
+    public void serializeAndDeserialize_withEmptyString_returnsSameArray() throws Exception {
+        String[] array = {""};
+
+        assertEqualsAfterSerializationDeserializationProcess(array);
+    }
+
+    @Test
+    public void serializeAndDeserialize_withElementAndEmptyString_returnsSameArray() throws Exception {
+        String[] array = {"o", ""};
+
+        assertEqualsAfterSerializationDeserializationProcess(array);
+    }
+
+    @Test
+    public void serializeAndDeserialize_withMoreThantOneEmptyString_returnsSameArray() throws Exception {
+        String[] array = {"", ""};
+
+        assertEqualsAfterSerializationDeserializationProcess(array);
     }
 
     @Test
@@ -69,4 +87,10 @@ public class StringArrayConverterTest {
         assertThat(deserialized, equalTo(new String[]{}));
     }
 
+    private void assertEqualsAfterSerializationDeserializationProcess(String[] array) {
+        String serialized = converter.serialize(array);
+        String[] deserialized = converter.deserialize(serialized);
+
+        assertThat(deserialized, equalTo(array));
+    }
 }

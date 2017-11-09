@@ -22,10 +22,13 @@ import java.util.Arrays;
 
 public class StringArrayConverter extends ArrayConverter {
 
+    private static final String EMPTY_CHARACTER = "\\0";
+
     @TypeConverter
     public String serialize(String[] array) {
         if (array == null) return null;
-        return Arrays.toString(array);
+        String[] escaped = stringArrayConverter(array, stringEscaper);
+        return Arrays.toString(escaped);
     }
 
     @TypeConverter
@@ -40,6 +43,36 @@ public class StringArrayConverter extends ArrayConverter {
     }
 
     private String [] parseArray(String arrayAsString) {
-        return getStringParts(arrayAsString);
+        String[] stringParts = getStringParts(arrayAsString);
+        String[] copy = stringArrayConverter(stringParts, stringUnescaper);
+        return copy;
     }
+
+    private String[] stringArrayConverter(String[] array, StringConverter stringConverter) {
+        String[] copy = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            copy[i] = stringConverter.convert(array[i]);
+        }
+        return copy;
+    }
+
+    private interface StringConverter {
+        String convert(String string);
+    }
+
+    private static StringConverter stringEscaper = new StringConverter() {
+
+        @Override
+        public String convert(String string) {
+            return string.equals("") ? EMPTY_CHARACTER : string;
+        }
+    };
+
+    private static StringConverter stringUnescaper = new StringConverter() {
+
+        @Override
+        public String convert(String string) {
+            return string.equals(EMPTY_CHARACTER) ? "" : string;
+        }
+    };
 }
