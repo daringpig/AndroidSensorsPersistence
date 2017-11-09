@@ -11,6 +11,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDa
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDaoIntegrationTest;
 import com.ubikgs.androidsensors.persistence.daos.wifi.WifiMeasurementsEntityDaoIntegrationTest;
+import com.ubikgs.androidsensors.persistence.migrations.MigrationTest;
 import com.ubikgs.androidsensors.persistence.modules.AndroidSensorsPersistenceDaoModule;
 import com.ubikgs.androidsensors.persistence.modules.TestBedModule;
 import com.ubikgs.androidsensors.persistence.modules.TestConfigModule;
@@ -94,4 +95,6 @@ public interface TestBedComponent {
     void inject(AndroidSensorsPersistenceIntegrationTest test);
 
     void inject(WifiMeasurementsEntityDaoIntegrationTest test);
+
+    void inject(MigrationTest test);
 }
