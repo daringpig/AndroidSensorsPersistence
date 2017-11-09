@@ -10,6 +10,7 @@ import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorEntity;
+import com.ubikgs.androidsensors.persistence.entities.wifi.WifiMeasurementsEntity;
 import com.ubikgs.androidsensors.records.SensorRecord;
 import com.ubikgs.androidsensors.records.gps.LocationRecord;
 import com.ubikgs.androidsensors.records.gps.RawGPSMeasurementsRecord;
@@ -104,6 +105,7 @@ public class TestEntityProvider {
 
     public static RawGPSMeasurementsEntity createRawGPSMeasurementsRecordEntity() {
         RawGPSMeasurementsEntity entity = new RawGPSMeasurementsEntity();
+        initializeSensorRecordFields(entity);
         entity.setSatelliteCount(random.nextInt(3));
         entity.setSvids(generateRandomIntArray());
         entity.setConstellations(generateRandomIntArray());
@@ -123,6 +125,7 @@ public class TestEntityProvider {
 
     public static RawGPSNavigationEntity createRawGPSNavigationRecordEntity() {
         RawGPSNavigationEntity entity = new RawGPSNavigationEntity();
+        initializeSensorRecordFields(entity);
         entity.setAccuracy(random.nextFloat());
         entity.setSensorTimestamp(new Date().getTime());
         entity.setSystemTimestamp(new Date().getTime());
@@ -132,6 +135,7 @@ public class TestEntityProvider {
 
     public static RawGPSStatusEntity createRawGPSStatusRecordEntity() {
         RawGPSStatusEntity entity = new RawGPSStatusEntity();
+        initializeSensorRecordFields(entity);
         entity.setAccuracy(random.nextFloat());
         entity.setSensorTimestamp(new Date().getTime());
         entity.setSystemTimestamp(new Date().getTime());
@@ -141,6 +145,24 @@ public class TestEntityProvider {
         entity.setConstellationTypes(generateRandomIntArray());
         entity.setElevations(generateRandomFloatArray());
         entity.setSvids(generateRandomIntArray());
+        return entity;
+    }
+
+    public static WifiMeasurementsEntity createWifiMeasurementsEntity() {
+        WifiMeasurementsEntity entity = new WifiMeasurementsEntity();
+        initializeSensorRecordFields(entity);
+        entity.setSsidCount(random.nextInt());
+        entity.setBssids(generateRandomStringArray());
+        entity.setSsids(generateRandomStringArray());
+        entity.setCapabilities(generateRandomStringArray());
+        entity.setCenterFreq0s(generateRandomIntArray());
+        entity.setCenterFreq1s(generateRandomIntArray());
+        entity.setChannelWidths(generateRandomIntArray());
+        entity.setFrequencies(generateRandomIntArray());
+        entity.setLevels(generateRandomIntArray());
+        entity.setOperatorsFriendlyName(generateRandomStringArray());
+        entity.setTimestamps(generateRandomLongArray());
+        entity.setVenueNames(generateRandomStringArray());
         return entity;
     }
 
@@ -226,6 +248,15 @@ public class TestEntityProvider {
             longs[i] = random.nextLong();
         }
         return longs;
+    }
+
+    private static String[] generateRandomStringArray() {
+        String[] strings = new String[generateRandomArrayLength()];
+        for (int i = 0; i < strings.length; i++) {
+            strings[i] = new String(new char[generateRandomArrayLength()])
+                    .replace('\0', 'o');
+        }
+        return strings;
     }
 
     private static int generateRandomArrayLength() {

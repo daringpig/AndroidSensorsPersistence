@@ -1,0 +1,944 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "f98b878fd0036937cc02e6bda05b5cac",
+    "entities": [
+      {
+        "tableName": "AccelerometerEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "x",
+            "columnName": "x",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "y",
+            "columnName": "y",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "z",
+            "columnName": "z",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_AccelerometerEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_AccelerometerEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "GravityEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "x",
+            "columnName": "x",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "y",
+            "columnName": "y",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "z",
+            "columnName": "z",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GravityEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_GravityEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "GyroscopeEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "x",
+            "columnName": "x",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "y",
+            "columnName": "y",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "z",
+            "columnName": "z",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_GyroscopeEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_GyroscopeEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "LinearAccelerationEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "x",
+            "columnName": "x",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "y",
+            "columnName": "y",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "z",
+            "columnName": "z",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_LinearAccelerationEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_LinearAccelerationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "MagneticFieldEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `x` REAL NOT NULL, `y` REAL NOT NULL, `z` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "x",
+            "columnName": "x",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "y",
+            "columnName": "y",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "z",
+            "columnName": "z",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_MagneticFieldEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_MagneticFieldEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "RotationVectorEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `xSin` REAL NOT NULL, `ySin` REAL NOT NULL, `zSin` REAL NOT NULL, `cos` REAL NOT NULL, `headingAccuracy` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xSin",
+            "columnName": "xSin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ySin",
+            "columnName": "ySin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "zSin",
+            "columnName": "zSin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cos",
+            "columnName": "cos",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "headingAccuracy",
+            "columnName": "headingAccuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RotationVectorEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RotationVectorEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "LocationEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `altitude` REAL NOT NULL, `speed` REAL NOT NULL, `bearing` REAL NOT NULL, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altitude",
+            "columnName": "altitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bearing",
+            "columnName": "bearing",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_LocationEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_LocationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "RawGPSMeasurementsEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `svids` TEXT, `constellations` TEXT, `timeOffsets` TEXT, `stateCodes` TEXT, `svTimes` TEXT, `svTimeUncerts` TEXT, `cn0DbHzs` TEXT, `pseudoranges` TEXT, `pseudorangeUncerts` TEXT, `deltaStates` TEXT, `deltas` TEXT, `deltaUncerts` TEXT, `multipaths` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "satelliteCount",
+            "columnName": "satelliteCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "svids",
+            "columnName": "svids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "constellations",
+            "columnName": "constellations",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timeOffsets",
+            "columnName": "timeOffsets",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateCodes",
+            "columnName": "stateCodes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svTimes",
+            "columnName": "svTimes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svTimeUncerts",
+            "columnName": "svTimeUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cn0DbHzs",
+            "columnName": "cn0DbHzs",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudoranges",
+            "columnName": "pseudoranges",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudorangeUncerts",
+            "columnName": "pseudorangeUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltaStates",
+            "columnName": "deltaStates",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltas",
+            "columnName": "deltas",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deltaUncerts",
+            "columnName": "deltaUncerts",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multipaths",
+            "columnName": "multipaths",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RawGPSMeasurementsEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RawGPSMeasurementsEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "RawGPSNavigationEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `message` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "message",
+            "columnName": "message",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RawGPSNavigationEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RawGPSNavigationEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "RawGPSStatusEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `satelliteCount` INTEGER NOT NULL, `azimuths` TEXT, `cn0DHzs` TEXT, `constellationTypes` TEXT, `elevations` TEXT, `svids` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "satelliteCount",
+            "columnName": "satelliteCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "azimuths",
+            "columnName": "azimuths",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cn0DHzs",
+            "columnName": "cn0DHzs",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "constellationTypes",
+            "columnName": "constellationTypes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "elevations",
+            "columnName": "elevations",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "svids",
+            "columnName": "svids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_RawGPSStatusEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_RawGPSStatusEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "WifiMeasurementsEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreignKey` INTEGER NOT NULL, `ssidCount` INTEGER NOT NULL, `bssids` TEXT, `ssids` TEXT, `capabilities` TEXT, `centerFreq0s` TEXT, `centerFreq1s` TEXT, `channelWidths` TEXT, `frequencies` TEXT, `levels` TEXT, `operatorsFriendlyName` TEXT, `timestamps` TEXT, `venueNames` TEXT, `accuracy` REAL NOT NULL, `sensorTimestamp` INTEGER NOT NULL, `systemTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ssidCount",
+            "columnName": "ssidCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bssids",
+            "columnName": "bssids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ssids",
+            "columnName": "ssids",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "capabilities",
+            "columnName": "capabilities",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "centerFreq0s",
+            "columnName": "centerFreq0s",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "centerFreq1s",
+            "columnName": "centerFreq1s",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "channelWidths",
+            "columnName": "channelWidths",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "frequencies",
+            "columnName": "frequencies",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "levels",
+            "columnName": "levels",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "operatorsFriendlyName",
+            "columnName": "operatorsFriendlyName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamps",
+            "columnName": "timestamps",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "venueNames",
+            "columnName": "venueNames",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sensorTimestamp",
+            "columnName": "sensorTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "systemTimestamp",
+            "columnName": "systemTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_WifiMeasurementsEntity_foreignKey",
+            "unique": false,
+            "columnNames": [
+              "foreignKey"
+            ],
+            "createSql": "CREATE  INDEX `index_WifiMeasurementsEntity_foreignKey` ON `${TABLE_NAME}` (`foreignKey`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f98b878fd0036937cc02e6bda05b5cac\")"
+    ]
+  }
+}

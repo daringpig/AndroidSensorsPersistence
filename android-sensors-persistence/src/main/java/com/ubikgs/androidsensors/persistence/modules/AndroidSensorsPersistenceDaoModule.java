@@ -13,7 +13,9 @@ import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.wifi.WifiMeasurementsEntityDao;
 import com.ubikgs.androidsensors.persistence.database.AndroidSensorsDatabase;
+import com.ubikgs.androidsensors.persistence.migrations.Migration1to2;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -42,67 +44,76 @@ public class AndroidSensorsPersistenceDaoModule {
     @Provides
     @Singleton
     AndroidSensorsDatabase provideAndroidSensorsDatabase(Context context,
-                                                         @Named("sensorsDBName") String databaseName) {
-        return Room.databaseBuilder(context, AndroidSensorsDatabase.class, databaseName).build();
+                                                         @Named("sensorsDBName") String databaseName,
+                                                         Migration1to2 MIGRATION_1_2) {
+        return Room.databaseBuilder(context, AndroidSensorsDatabase.class, databaseName)
+                .addMigrations(MIGRATION_1_2)
+                .build();
     }
 
     @Provides
     @Singleton
-    AccelerometerEntityDao provideAccelerometerRecordEntityDao(AndroidSensorsDatabase database) {
+    AccelerometerEntityDao provideAccelerometerEntityDao(AndroidSensorsDatabase database) {
         return database.accelerometerEntityDao();
     }
 
     @Provides
     @Singleton
-    GravityEntityDao provideGravityRecordEntityDao(AndroidSensorsDatabase database) {
+    GravityEntityDao provideGravityEntityDao(AndroidSensorsDatabase database) {
         return database.gravityEntityDao();
     }
 
     @Provides
     @Singleton
-    GyroscopeEntityDao provideGyroscopeRecordEntityDao(AndroidSensorsDatabase database) {
+    GyroscopeEntityDao provideGyroscopeEntityDao(AndroidSensorsDatabase database) {
         return database.gyroscopeEntityDao();
     }
 
     @Provides
     @Singleton
-    LinearAccelerationEntityDao provideLinearAccelerationRecordEntityDao(AndroidSensorsDatabase database) {
+    LinearAccelerationEntityDao provideLinearAccelerationEntityDao(AndroidSensorsDatabase database) {
         return database.linearAccelerationEntityDao();
     }
 
     @Provides
     @Singleton
-    MagneticFieldEntityDao provideMagneticFieldRecordEntityDao(AndroidSensorsDatabase database) {
+    MagneticFieldEntityDao provideMagneticFieldEntityDao(AndroidSensorsDatabase database) {
         return database.magneticFieldEntityDao();
     }
 
     @Provides
     @Singleton
-    RotationVectorEntityDao provideRotationVectorRecordEntityDao(AndroidSensorsDatabase database) {
+    RotationVectorEntityDao provideRotationVectorEntityDao(AndroidSensorsDatabase database) {
         return database.rotationVectorEntityDao();
     }
 
     @Provides
     @Singleton
-    LocationEntityDao provideLocationRecordEntityDao(AndroidSensorsDatabase database) {
+    LocationEntityDao provideLocationEntityDao(AndroidSensorsDatabase database) {
         return database.locationEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSMeasurementsEntityDao provideRawGPSMeasurementsRecordEntityDao(AndroidSensorsDatabase database) {
+    RawGPSMeasurementsEntityDao provideRawGPSMeasurementsEntityDao(AndroidSensorsDatabase database) {
         return database.rawGPSMeasurementsEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSNavigationEntityDao provideRawGPSNavigationRecordEntityDao(AndroidSensorsDatabase database) {
+    RawGPSNavigationEntityDao provideRawGPSNavigationEntityDao(AndroidSensorsDatabase database) {
         return database.rawGPSNavigationEntityDao();
     }
 
     @Provides
     @Singleton
-    RawGPSStatusEntityDao provideRawGPSStatusRecordEntityDao(AndroidSensorsDatabase database) {
+    RawGPSStatusEntityDao provideRawGPSStatusEntityDao(AndroidSensorsDatabase database) {
         return database.rawGPSStatusEntityDao();
+    }
+
+    @Provides
+    @Singleton
+    WifiMeasurementsEntityDao provideWifiMeasurementsEntityDao(AndroidSensorsDatabase database) {
+        return database.wifiMeasurementsEntityDao();
     }
 }

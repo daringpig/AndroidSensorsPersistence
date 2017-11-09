@@ -14,6 +14,7 @@ import com.ubikgs.androidsensors.persistence.daos.imu.GyroscopeEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.LinearAccelerationEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.MagneticFieldEntityDao;
 import com.ubikgs.androidsensors.persistence.daos.imu.RotationVectorEntityDao;
+import com.ubikgs.androidsensors.persistence.daos.wifi.WifiMeasurementsEntityDao;
 import com.ubikgs.androidsensors.persistence.entities.gps.LocationEntity;
 import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSMeasurementsEntity;
 import com.ubikgs.androidsensors.persistence.entities.gps.RawGPSNavigationEntity;
@@ -24,10 +25,12 @@ import com.ubikgs.androidsensors.persistence.entities.imu.GyroscopeEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.LinearAccelerationEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.MagneticFieldEntity;
 import com.ubikgs.androidsensors.persistence.entities.imu.RotationVectorEntity;
+import com.ubikgs.androidsensors.persistence.entities.wifi.WifiMeasurementsEntity;
 import com.ubikgs.androidsensors.persistence.typeconverters.DoubleArrayConverter;
 import com.ubikgs.androidsensors.persistence.typeconverters.FloatArrayConverter;
 import com.ubikgs.androidsensors.persistence.typeconverters.IntArrayConverter;
 import com.ubikgs.androidsensors.persistence.typeconverters.LongArrayConverter;
+import com.ubikgs.androidsensors.persistence.typeconverters.StringArrayConverter;
 
 /**
  * Copyright 2017 Alberto González Pérez
@@ -54,13 +57,15 @@ import com.ubikgs.androidsensors.persistence.typeconverters.LongArrayConverter;
         LocationEntity.class,
         RawGPSMeasurementsEntity.class,
         RawGPSNavigationEntity.class,
-        RawGPSStatusEntity.class
-}, version = 1)
+        RawGPSStatusEntity.class,
+        WifiMeasurementsEntity.class
+}, version = 2)
 @TypeConverters({
         DoubleArrayConverter.class,
         FloatArrayConverter.class,
         IntArrayConverter.class,
-        LongArrayConverter.class
+        LongArrayConverter.class,
+        StringArrayConverter.class
 })
 public abstract class AndroidSensorsDatabase extends RoomDatabase {
     /*
@@ -89,4 +94,6 @@ public abstract class AndroidSensorsDatabase extends RoomDatabase {
     public abstract RawGPSNavigationEntityDao rawGPSNavigationEntityDao();
 
     public abstract RawGPSStatusEntityDao rawGPSStatusEntityDao();
+
+    public abstract WifiMeasurementsEntityDao wifiMeasurementsEntityDao();
 }
