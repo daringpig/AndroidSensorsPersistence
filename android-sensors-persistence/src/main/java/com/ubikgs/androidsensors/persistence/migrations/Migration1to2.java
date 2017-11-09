@@ -50,5 +50,7 @@ public class Migration1to2 extends Migration {
                 "`sensorTimestamp` INTEGER NOT NULL, " +
                 "`systemTimestamp` INTEGER NOT NULL" +
             ")");
+        database.execSQL("CREATE  INDEX `index_WifiMeasurementsEntity_foreignKey` " +
+                "ON `WifiMeasurementsEntity` (`foreignKey`)");
     }
 }
