@@ -11,6 +11,7 @@ import com.ubikgs.androidsensors.persistence.repositories.imu.GyroscopeRepositor
 import com.ubikgs.androidsensors.persistence.repositories.imu.LinearAccelerationRepository;
 import com.ubikgs.androidsensors.persistence.repositories.imu.MagneticFieldRepository;
 import com.ubikgs.androidsensors.persistence.repositories.imu.RotationVectorRepository;
+import com.ubikgs.androidsensors.persistence.repositories.wifi.WifiMeasurementsRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -50,7 +51,8 @@ public class AndroidSensorsPersistenceRepositoryModule {
             LocationRepository locationRepository,
             RawGPSMeasurementsRepository rawGPSMeasurementsRepository,
             RawGPSNavigationRepository rawGPSNavigationRepository,
-            RawGPSStatusRepository rawGPSStatusRepository) {
+            RawGPSStatusRepository rawGPSStatusRepository,
+            WifiMeasurementsRepository wifiMeasurementsRepository) {
 
         return new HashSet<RecordRepository>(Arrays.asList(
                 accelerometerRepository,
@@ -62,6 +64,7 @@ public class AndroidSensorsPersistenceRepositoryModule {
                 locationRepository,
                 rawGPSMeasurementsRepository,
                 rawGPSNavigationRepository,
-                rawGPSStatusRepository));
+                rawGPSStatusRepository,
+                wifiMeasurementsRepository));
     }
 }

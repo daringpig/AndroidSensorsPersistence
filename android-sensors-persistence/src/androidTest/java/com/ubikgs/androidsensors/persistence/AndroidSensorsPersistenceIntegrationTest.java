@@ -34,6 +34,8 @@ import static org.junit.Assert.assertThat;
  */
 public class AndroidSensorsPersistenceIntegrationTest {
 
+    private static final int REPOSITORY_COUNT = 11;
+
     @Inject Context context;
 
     private AndroidSensorsPersistence androidSensorsPersistence;
@@ -51,6 +53,12 @@ public class AndroidSensorsPersistenceIntegrationTest {
     public void recordRepositories_withDefaultConfigIsEmpty_isFalse() throws Exception {
         boolean empty = androidSensorsPersistence.allRecordRepositories().isEmpty();
         assertThat(empty, is(false));
+    }
+
+    @Test
+    public void recordRepositories_withDefaultConfigEqualsRepositoryCount_isFalse() throws Exception {
+        int count = androidSensorsPersistence.allRecordRepositories().size();
+        assertThat(count, equalTo(REPOSITORY_COUNT));
     }
 
     @Test
